@@ -1,6 +1,6 @@
 {
-    "name": "listpackageusingproject",
-    "short_name": "listpackageusingproject",
+    "name": "pgr",
+    "short_name": "pgr",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

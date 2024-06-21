@@ -1,6 +1,6 @@
 {
-    "name": "listpackageusingproject",
-    "short_name": "listpackageusingproject",
+    "name": "tast1",
+    "short_name": "tast1",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

@@ -1,71 +1,18 @@
-// lib/main.dart
-
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:list_package/list_package.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nitrite/nitrite.dart';
+import 'package:proxima/src/app/app.dart';
+import 'package:proxima/src/app/app_bloc_observer.dart';
+import 'package:proxima/src/common/common.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('My Home Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Welcome to My App!',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DataList(
-                      listType: 'users', // Adjust listType as needed
-                    ),
-                  ),
-                );
-              },
-              child: Text('View User List'),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => DataList(
-                      listType: 'employees', // Adjust listType as needed
-                    ),
-                  ),
-                );
-              },
-              child: Text('View Employee List'),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  EquatableConfig.stringify = kDebugMode;
+  Bloc.observer = const AppBlocObserver();
+  // Add cross-flavor configuration here
+  final LocalDbRepository localDbRepository = LocalDbRepository();
+  final Nitrite localDB = await localDbRepository.getLocalDbInstance();
+  runApp(App(localDB: localDB));
 }

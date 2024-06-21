@@ -1,0 +1,59 @@
+{
+  "@@locale": "en",
+  "submit": "Submit",
+  "@submit": {
+    "description": ""
+  },
+  "add": "Add",
+  "@add": {
+    "description": ""
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": ""
+  },
+  "update": "Update",
+  "@update": {
+    "description": ""
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": ""
+  },
+  "confirm": "Confirm",
+  "@confirm": {
+    "description": ""
+  },
+  "done": "Done",
+  "@done": {
+    "description": ""
+  },
+  "ok": "Ok",
+  "@ok": {
+    "description": ""
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": ""
+  },
+  "next": "Next",
+  "@next": {
+    "description": ""
+  },
+  "previous": "Previous",
+  "@previous": {
+    "description": ""
+  },
+  "skip": "Skip",
+  "@skip": {
+    "description": ""
+  },
+  "try_again": "Try again",
+  "@try_again": {
+    "description": ""
+  },
+  "add_new_field": "Add New Field",
+  "@add_new_field": {
+    "description": ""
+  }
+}

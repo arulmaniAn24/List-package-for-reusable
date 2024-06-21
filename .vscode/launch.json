@@ -1,0 +1,85 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "proxima",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "proxima (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "proxima (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dynamic_form",
+            "cwd": "packages\\dynamic_form",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dynamic_form (profile mode)",
+            "cwd": "packages\\dynamic_form",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dynamic_form (release mode)",
+            "cwd": "packages\\dynamic_form",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "nitrite",
+            "cwd": "build\\flutter_assets\\packages\\nitrite",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "nitrite (profile mode)",
+            "cwd": "build\\flutter_assets\\packages\\nitrite",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "nitrite (release mode)",
+            "cwd": "build\\flutter_assets\\packages\\nitrite",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "nitrite_hive_adapter",
+            "cwd": "build\\flutter_assets\\packages\\nitrite_hive_adapter",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "nitrite_hive_adapter (profile mode)",
+            "cwd": "build\\flutter_assets\\packages\\nitrite_hive_adapter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "nitrite_hive_adapter (release mode)",
+            "cwd": "build\\flutter_assets\\packages\\nitrite_hive_adapter",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

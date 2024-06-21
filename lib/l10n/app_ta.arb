@@ -1,0 +1,59 @@
+{
+  "@@locale": "ta",
+  "submit": "சமர்ப்பிக்கவும்",
+  "@submit": {
+    "description": ""
+  },
+  "add": "Add",
+  "@add": {
+    "description": ""
+  },
+  "edit": "தொகு",
+  "@edit": {
+    "description": ""
+  },
+  "update": "புதுப்பிக்கவும்",
+  "@update": {
+    "description": ""
+  },
+  "delete": "அழி",
+  "@delete": {
+    "description": ""
+  },
+  "confirm": "உறுதி",
+  "@confirm": {
+    "description": ""
+  },
+  "done": "முடிந்தது",
+  "@done": {
+    "description": ""
+  },
+  "ok": "சரி",
+  "@ok": {
+    "description": ""
+  },
+  "cancel": "ரத்து செய்",
+  "@cancel": {
+    "description": ""
+  },
+  "next": "அடுத்தது",
+  "@next": {
+    "description": ""
+  },
+  "previous": "முந்தைய",
+  "@previous": {
+    "description": ""
+  },
+  "skip": "தவிர்க்கவும்",
+  "@skip": {
+    "description": ""
+  },
+  "try_again": "மீண்டும் முயற்சி செய்",
+  "@try_again": {
+    "description": ""
+  },
+  "add_new_field": "புதிய புலத்தைச் சேர்க்கவும்",
+  "@add_new_field": {
+    "description": ""
+  }
+}

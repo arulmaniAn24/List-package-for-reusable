@@ -1,0 +1,564 @@
+{
+  "form": {
+    "field_value": "interviewer_profile",
+    "labels": [
+      {
+        "language": "en",
+        "value": "Interviewer Profile"
+      },
+      {
+        "language": "ta",
+        "value": "நேர்காணல் செய்பவர் சுயவிவரம்"
+      }
+    ],
+    "display_on": null,
+    "next_form": null,
+    "version": 1
+  },
+  "form_fields": [
+    {
+      "field_value": "pick_image",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Select Image"
+        },
+        {
+          "language": "ta",
+          "value": "படத்தைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "type": "single_image_picker",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select Image"
+        },
+        {
+          "language": "ta",
+          "value": "படத்தைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "field_value": "name",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Name of the Interviewer"
+        },
+        {
+          "language": "ta",
+          "value": "நேர்காணல் செய்பவரின் பெயர்"
+        }
+      ],
+      "type": "text",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Enter interviewer name"
+        },
+        {
+          "language": "ta",
+          "value": "நேர்காணல் செய்பவரின் பெயரை உள்ளிடவும்"
+        }
+      ],
+      "keyboard_type": "text",
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true,
+          "max_line": 1
+        }
+      ]
+    },
+    {
+      "field_value": "year_of_pursuing",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Year of Pursuing"
+        },
+        {
+          "language": "ta",
+          "value": "பின்தொடர்ந்த ஆண்டு"
+        }
+      ],
+      "type": "multi_select_dropdown",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": [
+        {
+          "language": "en",
+          "key": "y1",
+          "value": "Year - 1"
+        },
+        {
+          "language": "ta",
+          "key": "y1t",
+          "value": "ஆண்டு - 1"
+        },
+        {
+          "language": "en",
+          "key": "y2",
+          "value": "Year - 2"
+        },
+        {
+          "language": "ta",
+          "key": "y2t",
+          "value": "ஆண்டு - 2"
+        }
+      ],
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select year of pursuing"
+        },
+        {
+          "language": "ta",
+          "value": "தொடரும் ஆண்டைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "field_value": "contact_number",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Contact Number"
+        },
+        {
+          "language": "ta",
+          "value": "தொடர்பு எண்"
+        }
+      ],
+      "type": "text",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Enter contact number"
+        },
+        {
+          "language": "ta",
+          "value": "தொடர்பு எண்ணை உள்ளிடவும்"
+        }
+      ],
+      "keyboard_type": "phone",
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true,
+          "max_line": 1,
+          "max_length": 10
+        }
+      ]
+    },
+    {
+      "field_value": "joining_date",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Date of joining"
+        },
+        {
+          "language": "ta",
+          "value": "சேர்ந்த தேதி"
+        }
+      ],
+      "type": "date",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Enter date of joining"
+        },
+        {
+          "language": "ta",
+          "value": "சேரும் தேதியை உள்ளிடவும்"
+        }
+      ],
+      "keyboard_type": "text",
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "field_value": "working_days",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Select no of worked days"
+        },
+        {
+          "language": "ta",
+          "value": "வேலை நாட்களின் எண்ணிக்கையைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "type": "date_range",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select no of worked days"
+        },
+        {
+          "language": "ta",
+          "value": "வேலை நாட்களின் எண்ணிக்கையைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": "text",
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "field_value": "year_of_pursuing",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Year of Pursuing"
+        },
+        {
+          "language": "ta",
+          "value": "பின்தொடர்ந்த ஆண்டு"
+        }
+      ],
+      "type": "single_select_dropdown",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": [
+        {
+          "language": "en",
+          "key": "y1",
+          "value": "Year - 1"
+        },
+        {
+          "language": "ta",
+          "key": "y1t",
+          "value": "ஆண்டு - 1"
+        },
+        {
+          "language": "en",
+          "key": "y2",
+          "value": "Year - 2"
+        },
+        {
+          "language": "ta",
+          "key": "y2t",
+          "value": "ஆண்டு - 2"
+        }
+      ],
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select year of pursuing"
+        },
+        {
+          "language": "ta",
+          "value": "தொடரும் ஆண்டைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true
+        }
+      ]
+    },
+    {
+      "field_value": "college_name",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Name of the College"
+        },
+        {
+          "language": "ta",
+          "value": "கல்லூரியின் பெயர்"
+        }
+      ],
+      "type": "text",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": null,
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Enter name of the college"
+        },
+        {
+          "language": "ta",
+          "value": "கல்லூரியின் பெயரை உள்ளிடவும்"
+        }
+      ],
+      "keyboard_type": "text",
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true,
+          "max_line": 1
+        }
+      ]
+    },
+    {
+      "field_value": "vehicle",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்கள்"
+        }
+      ],
+      "type": "multi_select_checkbox_list",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": [
+        {
+          "language": "en",
+          "value": "Bicycle"
+        },
+        {
+          "language": "ta",
+          "value": "மிதிவண்டி"
+        },
+        {
+          "language": "en",
+          "value": "Two-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "இரு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Four-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "நான்கு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Other vehicle"
+        },
+        {
+          "language": "ta",
+          "value": "மற்ற வாகனம்"
+        }
+      ],
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்களைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true,
+          "horizontal": true
+        }
+      ]
+    },
+    {
+      "field_value": "vehicle",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்கள்"
+        }
+      ],
+      "type": "single_select_checkbox_list",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": [
+        {
+          "language": "en",
+          "value": "Bicycle"
+        },
+        {
+          "language": "ta",
+          "value": "மிதிவண்டி"
+        },
+        {
+          "language": "en",
+          "value": "Two-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "இரு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Four-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "நான்கு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Other vehicle"
+        },
+        {
+          "language": "ta",
+          "value": "மற்ற வாகனம்"
+        }
+      ],
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்களைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": true,
+          "horizontal": false
+        }
+      ]
+    },
+    {
+      "field_value": "vehicle",
+      "labels": [
+        {
+          "language": "en",
+          "value": "Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்கள்"
+        }
+      ],
+      "type": "radio_button",
+      "is_read_only": false,
+      "default_value": null,
+      "option_type": "text",
+      "options": [
+        {
+          "language": "en",
+          "value": "Bicycle"
+        },
+        {
+          "language": "ta",
+          "value": "மிதிவண்டி"
+        },
+        {
+          "language": "en",
+          "value": "Two-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "இரு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Four-wheeler"
+        },
+        {
+          "language": "ta",
+          "value": "நான்கு சக்கர வாகனம்"
+        },
+        {
+          "language": "en",
+          "value": "Other vehicle"
+        },
+        {
+          "language": "ta",
+          "value": "மற்ற வாகனம்"
+        }
+      ],
+      "place_holder": [
+        {
+          "language": "en",
+          "value": "Select Vehicles"
+        },
+        {
+          "language": "ta",
+          "value": "வாகனங்களைத் தேர்ந்தெடுக்கவும்"
+        }
+      ],
+      "keyboard_type": null,
+      "display_on": null,
+      "value_restricted": true,
+      "validations": [
+        {
+          "mandatory": false,
+          "horizontal": true
+        }
+      ]
+    }
+  ]
+}

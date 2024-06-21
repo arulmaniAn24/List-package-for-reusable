@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "date_of_birth": "1990-01-01",
+    "bio": "Software developer and tech enthusiast.",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "janesmith@example.com",
+    "date_of_birth": "1985-02-15",
+    "bio": "Graphic designer and artist.",
+    "location": "New York, NY"
+  },
+  {
+    "id": 3,
+    "name": "Mike Johnson",
+    "username": "mikejohnson",
+    "email": "mikejohnson@example.com",
+    "date_of_birth": "1992-03-10",
+    "bio": "Entrepreneur and investor.",
+    "location": "Los Angeles, CA"
+  },
+  {
+    "id": 4,
+    "name": "Emily Davis",
+    "username": "emilydavis",
+    "email": "emilydavis@example.com",
+    "date_of_birth": "1988-04-05",
+    "bio": "Photographer and traveler.",
+    "location": "Chicago, IL"
+  },
+  {
+    "id": 5,
+    "name": "Robert Brown",
+    "username": "robertbrown",
+    "email": "robertbrown@example.com",
+    "date_of_birth": "1995-05-20",
+    "bio": "Musician and songwriter.",
+    "location": "Austin, TX"
+  },
+  {
+    "id": 6,
+    "name": "Laura Wilson",
+    "username": "laurawilson",
+    "email": "laurawilson@example.com",
+    "date_of_birth": "1982-06-30",
+    "bio": "Chef and food blogger.",
+    "location": "Portland, OR"
+  },
+  {
+    "id": 7,
+    "name": "David Clark",
+    "username": "davidclark",
+    "email": "davidclark@example.com",
+    "date_of_birth": "1991-07-25",
+    "bio": "Fitness coach and nutritionist.",
+    "location": "Miami, FL"
+  },
+  {
+    "id": 8,
+    "name": "Sarah Lewis",
+    "username": "sarahlewis",
+    "email": "sarahlewis@example.com",
+    "date_of_birth": "1987-08-18",
+    "bio": "Writer and novelist.",
+    "location": "Boston, MA"
+  },
+  {
+    "id": 9,
+    "name": "Chris Martinez",
+    "username": "chrismartinez",
+    "email": "chrismartinez@example.com",
+    "date_of_birth": "1993-09-12",
+    "bio": "Digital marketer and SEO expert.",
+    "location": "Seattle, WA"
+  },
+  {
+    "id": 10,
+    "name": "Amanda Walker",
+    "username": "amandawalker",
+    "email": "amandawalker@example.com",
+    "date_of_birth": "1989-10-09",
+    "bio": "Fashion designer and stylist.",
+    "location": "Denver, CO"
+  },
+  {
+    "id": 11,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "janesmith@example.com",
+    "date_of_birth": "1985-02-15",
+    "bio": "Graphic designer and artist.",
+    "location": "New York, NY"
+  },
+  {
+    "id": 12,
+    "name": "Amanda Walker",
+    "username": "amandawalker",
+    "email": "amandawalker@example.com",
+    "date_of_birth": "1989-10-09",
+    "bio": "Fashion designer and stylist.",
+    "location": "Denver, CO"
+  },
+  {
+    "id": 13,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "date_of_birth": "1990-01-01",
+    "bio": "Software developer and tech enthusiast.",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": 14,
+    "name": "Mike Johnson",
+    "username": "mikejohnson",
+    "email": "mikejohnson@example.com",
+    "date_of_birth": "1992-03-10",
+    "bio": "Entrepreneur and investor.",
+    "location": "Los Angeles, CA"
+  }
+]
+
+

@@ -12,7 +12,9 @@ ActionClass _$ActionClassFromJson(Map<String, dynamic> json) => ActionClass(
       actionProps: json['props'] == null
           ? null
           : ActionProps.fromJson(json['props'] as Map<String, dynamic>),
-      name: json['name'] as String?,
+      name: (json['name'] as List<dynamic>?)
+          ?.map((e) => PlaceHolder.fromJson(e as Map<String, dynamic>))
+          .toList(),
       icon: json['icon'] == null
           ? null
           : IconClas.fromJson(json['icon'] as Map<String, dynamic>),

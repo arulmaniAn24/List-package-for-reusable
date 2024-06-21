@@ -11,8 +11,8 @@ part 'item.g.dart';
 class Item extends Equatable {
   final String? type;
   final IconClas? icon;
-  final String? label;
-  final String? tooltip;
+  final List<PlaceHolder>? label;
+  final List<PlaceHolder>? tooltip;
   final dynamic activeIcon;
   final dynamic backgroundColor;
   final String? path;
@@ -30,8 +30,8 @@ class Item extends Equatable {
   Item copyWith({
     String? type,
     IconClas? icon,
-    String? label,
-    String? tooltip,
+    List<PlaceHolder>? label,
+    List<PlaceHolder>? tooltip,
     dynamic activeIcon,
     dynamic backgroundColor,
     String? path,

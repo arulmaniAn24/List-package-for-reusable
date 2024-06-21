@@ -11,8 +11,12 @@ Item _$ItemFromJson(Map<String, dynamic> json) => Item(
       icon: json['icon'] == null
           ? null
           : IconClas.fromJson(json['icon'] as Map<String, dynamic>),
-      label: json['label'] as String?,
-      tooltip: json['tooltip'] as String?,
+      label: (json['label'] as List<dynamic>?)
+          ?.map((e) => PlaceHolder.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      tooltip: (json['tooltip'] as List<dynamic>?)
+          ?.map((e) => PlaceHolder.fromJson(e as Map<String, dynamic>))
+          .toList(),
       activeIcon: json['activeIcon'],
       backgroundColor: json['backgroundColor'],
       path: json['path'] as String?,

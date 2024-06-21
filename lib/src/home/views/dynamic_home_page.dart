@@ -66,8 +66,7 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
                     child: DynamicHomeWidget(
                   homePageData: homeData!,
                   leadingTitle: 'Hi, Ben',
-    
-                   currentLanguage: 'en',
+                  currentLanguage: 'ta',
                 ));
               }
               return Center(

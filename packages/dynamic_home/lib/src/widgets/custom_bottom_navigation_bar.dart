@@ -88,8 +88,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar(
-      {super.key, required this.navigation, this.onTap});
+      {super.key,
+      required this.navigation,
+      this.onTap,
+      required this.currentLanguage});
 
+  final String currentLanguage;
   final BottomNavigation navigation;
   final void Function(int)? onTap;
 
@@ -130,9 +134,12 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       return items.asMap().entries.map((entry) {
         int index = entry.key;
         Item item = entry.value;
+        final label = item.label
+            ?.firstWhere((x) => x.language == widget.currentLanguage)
+            .value;
         return _buildNavItem(
           icon: getIcon(item.icon!.iconName!),
-          label: item.label!,
+          label: label!,
           index: index,
         );
       }).toList();
@@ -188,11 +195,15 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
                 const SizedBox(height: 2.0),
                 isSelected
                     ? const SizedBox()
-                    : Text(
-                        label,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 10.0,
+                    : SizedBox(
+                        height: 30,
+                        child: Text(
+                          label,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 10.0,
+                          ),
                         ),
                       ),
               ],

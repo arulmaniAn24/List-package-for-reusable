@@ -10,7 +10,7 @@ part 'menu_list.g.dart';
 @JsonSerializable()
 class MenuList extends Equatable {
   final String? type;
-  final String? labelName;
+  final List<PlaceHolder>? labelName;
   final IconClas? icon;
   final String? bgColor;
   final String? path;
@@ -29,7 +29,7 @@ class MenuList extends Equatable {
 
   MenuList copyWith({
     String? type,
-    String? labelName,
+    List<PlaceHolder>? labelName,
     IconClas? icon,
     String? bgColor,
     String? path,

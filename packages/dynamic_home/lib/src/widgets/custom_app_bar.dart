@@ -7,8 +7,9 @@ import '../utils/utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
-      {super.key, required this.title, required this.appBarWidget});
+      {super.key, required this.title, required this.appBarWidget, required this.currentLanguage});
   final String title;
+  final String currentLanguage;
   final AppbarWidget appBarWidget;
 
   @override

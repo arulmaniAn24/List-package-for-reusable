@@ -229,20 +229,14 @@
                     "padding": {
                         "top": 8,
                         "bottom": 8,
-                        "left": 0,
-                        "right": 0
+                        "left": 16,
+                        "right": 16
                     },
                     "position": {
                         "top": 130,
                         "bottom": 0,
                         "left": 0,
                         "right": 0
-                    },
-                    "margin": {
-                        "top": 0,
-                        "bottom": 0,
-                        "left": 16,
-                        "right": 16
                     }
                 },
                 "task_flex": 10,
@@ -284,8 +278,26 @@
                             "package": "font_awesome_flutter",
                             "icon_name": "home"
                         },
-                        "label": "Home",
-                        "tooltip": "Home",
+                        "label": [
+                            {
+                                "language": "en",
+                                "value": "Home"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "ஹாம்"
+                            }
+                        ],
+                        "tooltip": [
+                            {
+                                "language": "en",
+                                "value": "Home"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "ஹாம்"
+                            }
+                        ],
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": "/home"
@@ -296,8 +308,26 @@
                             "package": "font_awesome_flutter",
                             "icon_name": "help"
                         },
-                        "label": "Help desk",
-                        "tooltip": "Help desk",
+                        "label": [
+                            {
+                                "language": "en",
+                                "value": "Help desk"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "ஹெல்ப் டெஸ்க்"
+                            }
+                        ],
+                        "tooltip": [
+                            {
+                                "language": "en",
+                                "value": "Help desk"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "ஹெல்ப் டெஸ்க்"
+                            }
+                        ],
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": null
@@ -308,8 +338,26 @@
                             "package": "font_awesome_flutter",
                             "icon_name": "learn"
                         },
-                        "label": "Learning",
-                        "tooltip": "Learning",
+                        "label": [
+                            {
+                                "language": "en",
+                                "value": "Learning"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "லேர்னிங்"
+                            }
+                        ],
+                        "tooltip": [
+                            {
+                                "language": "en",
+                                "value": "Learning"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "லேர்னிங்"
+                            }
+                        ],
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": null
@@ -320,8 +368,26 @@
                             "package": "font_awesome_flutter",
                             "icon_name": "alert"
                         },
-                        "label": "Notification",
-                        "tooltip": "Notification",
+                        "label": [
+                            {
+                                "language": "en",
+                                "value": "Notification"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "நோட்டிபிகேஷன்"
+                            }
+                        ],
+                        "tooltip": [
+                            {
+                                "language": "en",
+                                "value": "Notification"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "நோட்டிபிகேஷன்"
+                            }
+                        ],
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": "/notifications"
@@ -332,8 +398,26 @@
                             "package": "font_awesome_flutter",
                             "icon_name": "menu"
                         },
-                        "label": "Menu",
-                        "tooltip": "Menu",
+                        "label": [
+                            {
+                                "language": "en",
+                                "value": "Menu"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "மெனு"
+                            }
+                        ],
+                        "tooltip": [
+                            {
+                                "language": "en",
+                                "value": "Menu"
+                            },
+                            {
+                                "language": "ta",
+                                "value": "மெனு"
+                            }
+                        ],
                         "activeIcon": null,
                         "backgroundColor": null,
                         "path": null
@@ -415,7 +499,16 @@
             "menu_list": [
                 {
                     "type": "card",
-                    "label_name": "User",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "User"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "பயனர்கள்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "user"
@@ -427,7 +520,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Department",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Department"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "டிபார்ட்மென்ட்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "department"
@@ -439,7 +541,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Master",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Master"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "மாஸ்டர்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "master"
@@ -451,7 +562,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Citizen's",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Citizen's"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "சிடிஸின்'ஸ்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "citizen"
@@ -463,7 +583,17 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Address",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Address"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "அட்ரஸ்"
+                        }
+                    ],
+                    
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "address"

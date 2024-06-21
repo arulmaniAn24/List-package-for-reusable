@@ -91,6 +91,7 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
     return Scaffold(
       appBar: CustomAppBar(
         title: widget.leadingTitle,
+        currentLanguage: widget.currentLanguage,
         appBarWidget: _homeWidgets.appbarWidget!,
       ),
       body: Stack(
@@ -102,6 +103,7 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
+        currentLanguage: widget.currentLanguage,
         navigation: _bottomNavigation,
       ),
     );

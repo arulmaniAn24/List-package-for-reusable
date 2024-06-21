@@ -11,9 +11,9 @@ AppbarWidget _$AppbarWidgetFromJson(Map<String, dynamic> json) => AppbarWidget(
       actionProps: json['props'] == null
           ? null
           : AppbarWidgetProps.fromJson(json['props'] as Map<String, dynamic>),
-      leading: (json['leading'] as List<dynamic>?)
-          ?.map((e) => ActionClass.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      leading: json['leading'] == null
+          ? null
+          : ActionClass.fromJson(json['leading'] as Map<String, dynamic>),
       actions: (json['actions'] as List<dynamic>?)
           ?.map((e) => ActionClass.fromJson(e as Map<String, dynamic>))
           .toList(),

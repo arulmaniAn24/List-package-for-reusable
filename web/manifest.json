@@ -1,6 +1,6 @@
 {
-    "name": "pgr",
-    "short_name": "pgr",
+    "name": "audiorecorder",
+    "short_name": "audiorecorder",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

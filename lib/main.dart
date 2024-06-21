@@ -1,3 +1,4 @@
+import 'package:audiorecorder/customaudiorecorder.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,28 +11,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Audio Recorder',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome PGR', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
-        body: Center(
-          child: Text(
-            'Welcome PGR',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      home: const CustomAudioRecorder(),
     );
   }
 }

@@ -7,7 +7,10 @@ import '../utils/utils.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
-      {super.key, required this.title, required this.appBarWidget, required this.currentLanguage});
+      {super.key,
+      required this.title,
+      required this.appBarWidget,
+      required this.currentLanguage});
   final String title;
   final String currentLanguage;
   final AppbarWidget appBarWidget;
@@ -46,9 +49,6 @@ List<Widget> renderAppbarActions(List<ActionClass>? actions) {
 }
 
 Widget _buildActionIcon(ActionClass action) {
-  if (kDebugMode) {
-    print("Action Fields${action.fieldType}");
-  }
   switch (action.fieldType) {
     case 'circular_avatar':
       return CircleAvatar(

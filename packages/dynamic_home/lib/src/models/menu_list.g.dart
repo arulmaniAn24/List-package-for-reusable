@@ -8,7 +8,7 @@ part of 'menu_list.dart';
 
 MenuList _$MenuListFromJson(Map<String, dynamic> json) => MenuList(
       type: json['type'] as String?,
-      labelName: (json['labelName'] as List<dynamic>?)
+      labelName: (json['label_name'] as List<dynamic>?)
           ?.map((e) => PlaceHolder.fromJson(e as Map<String, dynamic>))
           .toList(),
       icon: json['icon'] == null
@@ -22,7 +22,7 @@ MenuList _$MenuListFromJson(Map<String, dynamic> json) => MenuList(
 
 Map<String, dynamic> _$MenuListToJson(MenuList instance) => <String, dynamic>{
       'type': instance.type,
-      'labelName': instance.labelName,
+      'label_name': instance.labelName,
       'icon': instance.icon,
       'bgColor': instance.bgColor,
       'path': instance.path,

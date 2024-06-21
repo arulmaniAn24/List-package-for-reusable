@@ -10,7 +10,19 @@ IconData getIcon(String input) {
     case 'help':
       return Icons.headset_mic;
     case 'learn':
-      return FontAwesomeIcons.book;
+      return FontAwesomeIcons.bookOpenReader;
+    case 'dashboard':
+      return FontAwesomeIcons.gaugeHigh;
+    case 'admin':
+      return FontAwesomeIcons.userGear;
+    case 'citizen':
+      return FontAwesomeIcons.userGroup;
+    case 'department':
+      return FontAwesomeIcons.building;
+    case 'master':
+      return FontAwesomeIcons.chessKing;
+    case 'certificate':
+      return FontAwesomeIcons.certificate;
     case 'alert':
       return Icons.notifications;
     case 'menu':
@@ -22,13 +34,13 @@ IconData getIcon(String input) {
     case 'account':
       return Icons.account_circle;
     case 'user':
-      return Icons.person;
+      return FontAwesomeIcons.user;
     case 'employees':
-      return Icons.group;
+      return FontAwesomeIcons.users;
     case 'address':
       return Icons.account_tree;
     case 'roles':
-      return Icons.supervisor_account;
+      return FontAwesomeIcons.userShield;
     default:
       return Icons.error;
   }

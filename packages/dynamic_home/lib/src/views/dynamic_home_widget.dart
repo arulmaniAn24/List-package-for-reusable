@@ -50,7 +50,11 @@ class _DynamicHomeWidgetState extends State<DynamicHomeWidget> {
             bottom: bodyWidget.bodyWidgetProps?.position?.bottom?.toDouble(),
             child: SizedBox(
               width: MediaQuery.of(context!).size.width,
-              child: CustomFavoriteSlider(favWidget: bodyWidget),
+              child: CustomFavoriteSlider(
+                favWidget: bodyWidget,
+                homeWidget: _homeWidgets,
+                currentLanguage: widget.currentLanguage,
+              ),
             ),
           );
         } else if (type == "search_bar") {

@@ -20,17 +20,8 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     Emitter<HomeDataState> emit,
   ) async {
     try {
-      if (kDebugMode) {
-        print('>> 1');
-      }
       emit(state.copyWith(status: () => HomeDataStatus.loading));
-      if (kDebugMode) {
-        print('>> 2');
-      }
       final homeData = await _homeDataRepository.getHomeData();
-      if (kDebugMode) {
-        print('>> 3');
-      }
       emit(
         state.copyWith(
           status: () => HomeDataStatus.success,

@@ -10,6 +10,7 @@ part 'menu_list.g.dart';
 @JsonSerializable()
 class MenuList extends Equatable {
   final String? type;
+  @JsonKey(name: "label_name")
   final List<PlaceHolder>? labelName;
   final IconClas? icon;
   final String? bgColor;

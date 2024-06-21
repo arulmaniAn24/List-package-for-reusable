@@ -49,7 +49,7 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
         child: BlocBuilder<HomeDataBloc, HomeDataState>(
           builder: (context, state) {
             if (kDebugMode) {
-              print('>> dashboard data ${state.status} ||  ${state.homeData}');
+              print('>> home scree data ${state.status} ||  ${state.homeData}');
             }
             if (state.homeData != null) {
               final homeData = state.homeData;

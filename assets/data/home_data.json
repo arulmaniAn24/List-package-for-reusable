@@ -20,18 +20,7 @@
                         "value": "பெலிக்ஸ்"
                     }
                 ],
-                "elevation": 0,
-                "centerTitle": true,
-                "titleSpacing": 16.0,
-                "titleTextStyle": {
-                    "fontSize": 20,
-                    "fontWeight": "bold",
-                    "color": "0xffffffff"
-                },
-                "iconTheme": {
-                    "color": "0xffffffff",
-                    "size": 24.0
-                }
+                "elevation": 0
             },
             "leading": {
                 "type": "app_bar_leading",
@@ -174,22 +163,8 @@
                     "grid_view": true
                 },
                 "props": {
-                    "height": 50,
-                    "width": 300,
-                    "padding": {
-                        "top": 8,
-                        "bottom": 8,
-                        "left": 0,
-                        "right": 0
-                    },
                     "position": {
                         "top": 0
-                    },
-                    "margin": {
-                        "top": 0,
-                        "bottom": 0,
-                        "left": 16,
-                        "right": 16
                     }
                 },
                 "fav_flex": 4,
@@ -204,12 +179,6 @@
                             "list": {
                                 "height": 50
                             }
-                        },
-                        "padding": {
-                            "top": 8,
-                            "bottom": 8,
-                            "left": 8,
-                            "right": 8
                         }
                     }
                 }
@@ -267,9 +236,7 @@
         "bottom_navigation": {
             "type": "bottom_navigation_bar",
             "props": {
-                "backgroundColor": "0xff1c1c84",
                 "currentIndex": 0,
-                "elevation": 8.0,
                 "iconSize": 24.0,
                 "items": [
                     {
@@ -422,31 +389,7 @@
                         "backgroundColor": null,
                         "path": null
                     }
-                ],
-                "selectedFontSize": 14.0,
-                "selectedIconTheme": {
-                    "color": "0xffffffff",
-                    "size": 28.0
-                },
-                "selectedItemColor": "0xffffffff",
-                "selectedLabelStyle": {
-                    "fontSize": 14.0,
-                    "fontWeight": "bold",
-                    "color": "0xffffffff"
-                },
-                "showSelectedLabels": true,
-                "showUnselectedLabels": true,
-                "unselectedFontSize": 12.0,
-                "unselectedIconTheme": {
-                    "color": "0xff000000",
-                    "size": 24.0
-                },
-                "unselectedItemColor": "0xff000000",
-                "unselectedLabelStyle": {
-                    "fontSize": 12.0,
-                    "fontWeight": "normal",
-                    "color": "0xff000000"
-                }
+                ]
             }
         },
         "menu": {
@@ -467,12 +410,6 @@
                     "bottom": 0,
                     "left": 0,
                     "right": 0
-                },
-                "margin": {
-                    "top": 0,
-                    "bottom": 0,
-                    "left": 16,
-                    "right": 16
                 }
             },
             "user_preference": {
@@ -488,15 +425,93 @@
                         "height": 50,
                         "width": 250
                     }
-                },
-                "margin": {
-                    "top": 8,
-                    "bottom": 8,
-                    "left": 8,
-                    "right": 8
                 }
             },
             "menu_list": [
+                {
+                    "type": "card",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Create Users"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "பயனர்களை உருவாக்கவும்"
+                        }
+                    ],
+                    "icon": {
+                        "package": "font_awesome_flutter",
+                        "icon_name": "user"
+                    },
+                    "bg_color": "0xffb74093",
+                    "path": "/user",
+                    "favorites": true,
+                    "index": 1
+                },
+                {
+                    "type": "card",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Manage Employees"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "பணியாளர்களை நிர்வகிக்கவும்"
+                        }
+                    ],
+                    "icon": {
+                        "package": "font_awesome_flutter",
+                        "icon_name": "employees"
+                    },
+                    "bg_color": "0xffb74093",
+                    "path": "/user",
+                    "favorites": true,
+                    "index": 1
+                },
+                {
+                    "type": "card",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Create Address Hierarchy"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "முகவரி படிநிலை"
+                        }
+                    ],
+                    "icon": {
+                        "package": "font_awesome_flutter",
+                        "icon_name": "address"
+                    },
+                    "bg_color": "0xffb74093",
+                    "path": "/user",
+                    "favorites": true,
+                    "index": 1
+                },
+                {
+                    "type": "card",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Create Users roles"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "பயனர் பாத்திரங்கள்"
+                        }
+                    ],
+                    "icon": {
+                        "package": "font_awesome_flutter",
+                        "icon_name": "roles"
+                    },
+                    "bg_color": "0xffb74093",
+                    "path": "/user",
+                    "favorites": true,
+                    "index": 1
+                },
                 {
                     "type": "card",
                     "label_name": [
@@ -593,7 +608,6 @@
                             "value": "அட்ரஸ்"
                         }
                     ],
-                    
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "address"
@@ -605,7 +619,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Administration",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Administration"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "அட்மினிஸ்டரேஷன்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "admin"
@@ -617,7 +640,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Dashboard",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Dashboard"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "டாஷ்போர்டு"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "dashboard"
@@ -629,10 +661,19 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "MLMS",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "MLMS"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "மலம்ஸ்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
-                        "icon_name": "mlms"
+                        "icon_name": "learn"
                     },
                     "bg_color": "0xff228b22",
                     "path": "/mlms",
@@ -641,7 +682,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Certification",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Certification"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "செர்டிபிகேஷன்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "certificate"
@@ -653,7 +703,16 @@
                 },
                 {
                     "type": "card",
-                    "label_name": "Helpdesk",
+                    "label_name": [
+                        {
+                            "language": "en",
+                            "value": "Help desk"
+                        },
+                        {
+                            "language": "ta",
+                            "value": "ஹெல்ப் டெஸ்க்"
+                        }
+                    ],
                     "icon": {
                         "package": "font_awesome_flutter",
                         "icon_name": "help"

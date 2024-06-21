@@ -1,12 +1,19 @@
 import 'package:dynamic_home/dynamic_home.dart';
 import 'package:dynamic_home/src/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomFavoriteSlider extends StatefulWidget {
-  const CustomFavoriteSlider({super.key, required this.favWidget});
+  const CustomFavoriteSlider(
+      {super.key,
+      required this.favWidget,
+      required this.homeWidget,
+      required this.currentLanguage});
   final BodyWidget favWidget;
+  final HomeWidgets homeWidget;
+  final String currentLanguage;
 
   @override
   CustomFavoriteSliderState createState() => CustomFavoriteSliderState();
@@ -52,21 +59,16 @@ class CustomFavoriteSliderState extends State<CustomFavoriteSlider> {
             .favWidget.favorite?.menuItemProps?.size?.grid?.height!
             .toDouble() ??
         30;
-    final favList = [
-      _buildFunctionalityItem(getIcon('user'), 'Create Users', iconSize),
-      _buildFunctionalityItem(
-          getIcon('employees'), 'Manage Employees', iconSize),
-      _buildFunctionalityItem(
-          getIcon('address'), 'Create Address Hierarchy', iconSize),
-      _buildFunctionalityItem(getIcon('roles'), 'Create Users roles', iconSize),
-      _buildFunctionalityItem(
-          getIcon('employees'), 'Manage Employees', iconSize),
-      _buildFunctionalityItem(
-          getIcon('address'), 'Create Address Hierarchy', iconSize),
-      _buildFunctionalityItem(getIcon('roles'), 'Create Users roles', iconSize),
-    ];
-
-    final pages = favList.fold<List<List<Widget>>>([], (list, x) {
+    final favList = widget.homeWidget.menu!.menuList?.map(
+      (menu) {
+        final labelName = menu.labelName
+            ?.firstWhere((x) => x.language == widget.currentLanguage)
+            .value;
+        return _buildFunctionalityItem(
+            getIcon(menu.icon!.iconName!), labelName ?? '', iconSize);
+      },
+    ).toList();
+    final pages = favList!.fold<List<List<Widget>>>([], (list, x) {
       if (list.isEmpty || list.last.length == (favFlex ?? 4)) {
         list.add([x]);
       } else {

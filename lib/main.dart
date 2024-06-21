@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:minimalpage/screens/minimalsidebar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,29 +11,47 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Minimal Page',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('PGR', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
-        body: Center(
-          child: Text(
-            'Welcome PGR',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+      routerConfig: _router,
     );
   }
 }
+
+final GoRouter _router = GoRouter(
+  initialLocation: '/',
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const MinimalPage(),
+      routes: [
+        GoRoute(
+          path: 'user',
+          builder: (context, state) => const MinimalPage(),
+          routes: [
+            GoRoute(
+              path: 'profile',
+              builder: (context, state) => const MinimalPage(),
+              routes: [
+                GoRoute(
+                  path: 'edit',
+                  builder: (context, state) => const MinimalPage(),
+                ),
+              ],
+            ),
+            GoRoute(
+              path: 'cards',
+              builder: (context, state) =>
+                  const Center(child: Text('User Cards Content')),
+            ),
+          ],
+        ),
+      ],
+    ),
+  ],
+);

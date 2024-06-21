@@ -1,0 +1,173 @@
+[
+  {
+    "icon": "https://minimals.cc/assets/icons/navbar/ic-user.svg",
+    "title": "User",
+    "release_type": "Prod",
+    "navigation_path": null,
+    "menu_items": [
+      {
+        "icon": null,
+        "title": "Profile",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": [
+          {
+            "icon": null,
+            "title": "Edit",
+            "release_type": "Prod",
+            "navigation_path": null
+          },
+          {
+            "icon": null,
+            "title": "View",
+            "release_type": "Prod",
+            "navigation_path": null
+          },
+          {
+            "icon": null,
+            "title": "Delete",
+            "release_type": "Prod",
+            "navigation_path": null
+          }
+        ]
+      },
+      {
+        "icon": null,
+        "title": "Cards",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "List",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Create",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Edit",
+        "release_type": "Beta",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Account",
+        "release_type": "Beta",
+        "navigation_path": null,
+        "menu_items": null
+      }
+    ]
+  },
+  {
+    "icon": "https://minimals.cc/assets/icons/navbar/ic-product.svg",
+    "title": "Product",
+    "release_type": "Prod",
+    "navigation_path": null,
+    "menu_items": [
+      {
+        "icon": null,
+        "title": "List",
+        "release_type": "Beta",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Details",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Create",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Edit",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      }
+    ]
+  },
+  {
+    "icon": "https://minimals.cc/assets/icons/navbar/ic-order.svg",
+    "title": "Order",
+    "release_type": "Beta",
+    "navigation_path": null,
+    "menu_items": [
+      {
+        "icon": null,
+        "title": "List",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Details",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      }
+    ]
+  },
+  {
+    "icon": "https://minimals.cc/assets/icons/navbar/ic-invoice.svg",
+    "title": "Invoice",
+    "release_type": "Prod",
+    "navigation_path": null,
+    "menu_items": [
+      {
+        "icon": null,
+        "title": "List",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Details",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      }
+    ]
+  },
+  {
+    "icon": "https://minimals.cc/assets/icons/navbar/ic-file.svg",
+    "title": "File",
+    "release_type": "Prod",
+    "navigation_path": null,
+    "menu_items": [
+      {
+        "icon": null,
+        "title": "List",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      },
+      {
+        "icon": null,
+        "title": "Details",
+        "release_type": "Prod",
+        "navigation_path": null,
+        "menu_items": null
+      }
+    ]
+  }
+]

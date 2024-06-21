@@ -1,4 +1,4 @@
-# pgr
+# minimalpage
 
 A new Flutter project.
 

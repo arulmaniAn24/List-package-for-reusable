@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Welcome PGR', style: TextStyle(color: Colors.white)),
+          title: const Text('PGR', style: TextStyle(color: Colors.white)),
           centerTitle: true,
           backgroundColor: Colors.blue,
         ),

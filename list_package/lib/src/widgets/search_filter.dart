@@ -1,21 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SearchFilter extends StatelessWidget {
-  final void Function(String) onSearchChanged;
+import '../bloc/data_bloc.dart';
+import '../bloc/data_event.dart';
 
-  SearchFilter({required this.onSearchChanged});
+
+
+class DataSearchDelegate<T> extends SearchDelegate<T> {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
+      ),
+    ];
+  }
+
+    @override
+Widget buildLeading(BuildContext context) {
+  return IconButton(
+    icon: Icon(Icons.arrow_back),
+    onPressed: () {
+      close(context, _getDefaultResult()); 
+    },
+  );
+}
+
+T _getDefaultResult() {
+  throw UnimplementedError('Implement _getDefaultResult() to return a default value of type T');
+}
+
+
+    @override
+    Widget buildResults(BuildContext context) {
+      
+    if (query.isNotEmpty) {
+      context.read<DataBloc<T>>().add(SearchEvent(query));
+    }
+    return Container(); 
+  }
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        decoration: InputDecoration(
-          labelText: 'Search',
-          border: OutlineInputBorder(),
-        ),
-        onChanged: onSearchChanged,
-      ),
-    );
+  Widget buildSuggestions(BuildContext context) {
+    return Container(); 
   }
 }

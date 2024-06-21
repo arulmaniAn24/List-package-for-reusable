@@ -4,6 +4,7 @@ import 'data_bloc.dart';
 
 import 'package:equatable/equatable.dart';
 
+
 abstract class DataState<T> extends Equatable {
   const DataState();
 
@@ -16,13 +17,28 @@ class DataInitial<T> extends DataState<T> {}
 class DataLoading<T> extends DataState<T> {}
 
 class DataLoaded<T> extends DataState<T> {
-  final List<DataItem<T>> data;
+  final List<DataItem<T>> originalData;
+  final List<DataItem<T>> filteredData;
   final DataViewType viewType;
+  final String? selectedFilter;
+  final List<String> filterOptions;
 
-  const DataLoaded(this.data, {this.viewType = DataViewType.card});
+  const DataLoaded({
+    required this.originalData,
+    required this.filteredData,
+    this.viewType = DataViewType.card,
+    this.selectedFilter,
+    required this.filterOptions,
+  });
 
   @override
-  List<Object> get props => [data, viewType];
+  List<Object> get props => [
+        originalData,
+        filteredData,
+        viewType,
+        selectedFilter ?? '',
+        filterOptions,
+      ];
 }
 
 class DataError<T> extends DataState<T> {
@@ -32,4 +48,14 @@ class DataError<T> extends DataState<T> {
 
   @override
   List<Object> get props => [error];
+}
+
+
+class SearchState<T> extends DataState<T> {
+  final String query;
+
+  SearchState(this.query);
+
+  @override
+  List<Object> get props => [query];
 }

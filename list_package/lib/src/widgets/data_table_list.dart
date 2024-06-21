@@ -1,9 +1,9 @@
-// lib/widgets/data_table_list.dart
+
 
 import 'package:flutter/material.dart';
 
 import '../models/data_item.dart';
-
+  
 class DataTableList<T> extends StatelessWidget {
   final List<DataItem<T>> data;
   final List<DataColumn> columns;

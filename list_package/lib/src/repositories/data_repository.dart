@@ -1,25 +1,24 @@
+
+
+import 'dart:convert';
 import '../models/data_item.dart';
 
 class DataRepository {
-  Future<List<DataItem<Map<String, dynamic>>>> fetchUserData() async {
-    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
-    return List.generate(
-      10,
-      (index) => DataItem(data: {
-        'name': 'User $index',
-        'email': 'user$index@example.com',
-      }),
-    );
+  Future<List<DataItem>> fetchUserData() async {
+  
+    return [
+      DataItem(data: {'name': 'Alice', 'email': 'alice@example.com'}),
+      DataItem(data: {'name': 'John', 'email': 'john@example.com'}),
+      DataItem(data: {'name': 'Charlie', 'email': 'charlie@example.com'}),
+    ];
   }
 
-  Future<List<DataItem<Map<String, dynamic>>>> fetchEmployeeData() async {
-    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
-    return List.generate(
-      10,
-      (index) => DataItem(data: {
-        'name': 'Employee $index',
-        'position': 'Position $index',
-      }),
-    );
+  Future<List<DataItem>> fetchEmployeeData() async {
+
+    return [
+      DataItem(data: {'name': 'Alice', 'position': 'Manager'}),
+      DataItem(data: {'name': 'John', 'position': 'Developer'}),
+      DataItem(data: {'name': 'Charlie', 'position': 'Designer'}),
+    ];
   }
 }

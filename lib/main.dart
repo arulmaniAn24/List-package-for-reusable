@@ -1,36 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:task1/B%20signin%20signup/m.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
-        useMaterial3: true,
+      home: HomePage(
+        title: 'AppBar',
+        icon: Icon(Icons.menu),
+        icons: Icon(Icons.settings),
+      
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('PGR', style: TextStyle(color: Colors.white)),
-          centerTitle: true,
-          backgroundColor: Colors.blue,
-        ),
-        body: Center(
-          child: Text(
-            'Welcome PGR',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  
+  const HomePage(
+      {super.key,
+      required this.title,
+      required this.icon, required this.icons,
+      
+      });
+  final String title;
+  final Widget icon;
+  final Widget icons;
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<IconData> icons = [Icons.label];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+        backgroundColor: Colors.green,
+        leading: IconButton(onPressed: () {}, icon: widget.icon),
+        actions: [
+          IconButton(onPressed: () {}, icon: widget.icons),
+          IconButton(onPressed: () {}, icon: widget.icons),
+        ],
       ),
     );
   }

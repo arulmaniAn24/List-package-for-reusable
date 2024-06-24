@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/data_bloc.dart';
 import '../bloc/data_event.dart';
 import '../bloc/data_state.dart';
-
 import '../repositories/data_repository.dart';
 import 'data_card_list.dart';
 import 'data_table_list.dart';
@@ -91,7 +90,7 @@ class DataList<T> extends StatelessWidget {
                     final data = dataItem.data as Map<String, dynamic>;
                     return [
                       DataCell(Text(data['name'] ?? '')),
-                      DataCell(Text(data['email'] ?? data['position'] ?? '')),
+                      DataCell(Text(data['email'] ?? data['position'] ?? '  ')),
                     ];
                   },
                 );

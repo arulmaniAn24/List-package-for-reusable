@@ -1,36 +1,50 @@
-// lib/main.dart
-
+import 'dart:convert';
+import 'package:dynamic_list_package/dynamic_list_package.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:list_package/list_package.dart';
 
-void main() {
-  runApp(MyApp());
+import 'package:dynamic_list_package/src/services/api_service.dart';
+
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final config = await loadConfig();
+
+  runApp(MyApp(config: config));
+}
+
+Future<Map<String, dynamic>> loadConfig() async {
+  String jsonString = await rootBundle.loadString('assets/config.json');
+  return jsonDecode(jsonString);
 }
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'My App',
-      home: BlocProvider(
-        create: (context) => DataBloc<dynamic>(DataRepository(), 'users')..add(LoadDataEvent()),
-        child: MyHomePage(),
-      ),
-    );
-  }
-}
+  final Map<String, dynamic> config;
 
-class MyHomePage extends StatelessWidget {
+  MyApp({required this.config});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: DataList<dynamic>(listType: 'users'), 
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ListBloc(apiService: ApiService()), // Correct instantiation
+        ),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          appBar: AppBar(title: Text('Dynamic List')),
+          body: DynamicListWidget(
+            userId: config['userId'],
+            filterCriteria: config['filterCriteria'],
+            sortBy: config['sortBy'],
+        
+            defaultView: config['defaultView'],
+          ),
+        ),
       ),
     );
   }

@@ -37,7 +37,11 @@ dependencies:
   flutter_bloc: ^8.1.6
   list_package:
     path: list_package
+  dynamic_list_package:
+    path: dynamic_list_package 
   equatable: ^2.0.5
+  http: ^1.2.1
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +63,8 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - assets/config.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

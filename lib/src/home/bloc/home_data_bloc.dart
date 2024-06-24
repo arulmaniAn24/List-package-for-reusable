@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dynamic_home/dynamic_home.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:proxima/src/home/repo/home_data_repository.dart';
 
 part 'home_data_event.dart';
@@ -21,7 +20,10 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
   ) async {
     try {
       emit(state.copyWith(status: () => HomeDataStatus.loading));
-      final homeData = await _homeDataRepository.getHomeData();
+      await _homeDataRepository.getHomeData();
+      print("1");
+      final homeData = await _homeDataRepository.fetchHomeDataFromDB();
+      print("2");
       emit(
         state.copyWith(
           status: () => HomeDataStatus.success,

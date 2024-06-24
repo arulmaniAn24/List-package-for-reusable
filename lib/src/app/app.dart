@@ -29,7 +29,7 @@ class App extends StatelessWidget {
           create: (context) => const DataCollectionRepository(),
         ),
         RepositoryProvider<HomeDataRepository>(
-          create: (context) => const HomeDataRepository(),
+          create: (context) => HomeDataRepository(localDB: localDB),
         ),
       ],
       child: const AppView(),

@@ -21,27 +21,34 @@ class LocalDbRepository {
   LocalDbRepository();
 
   Future<Nitrite> getLocalDbInstance() async {
-    Nitrite? localDb;
-    if (kIsWeb) {
-      localDb = await Nitrite.builder()
-          .fieldSeparator('.')
-          .openOrCreate(username: 'sirius', password: 'S!rius11');
-    } else {
-      final Directory appDocumentsDirectory =
-          await getApplicationDocumentsDirectory();
+    try {
+      Nitrite? localDb;
+      if (kIsWeb) {
+        localDb = await Nitrite.builder()
+            .fieldSeparator('.')
+            .openOrCreate(username: 'sirius', password: 'S!rius11');
+      } else {
+        final Directory appDocumentsDirectory =
+            await getApplicationDocumentsDirectory();
 
-      var dbDir = await Directory(
-              '${appDocumentsDirectory.path}${Platform.pathSeparator}localdb')
-          .create(recursive: true);
+        var dbDir = await Directory(
+                '${appDocumentsDirectory.path}${Platform.pathSeparator}localdb')
+            .create(recursive: true);
 
-      /// ToDo Compression and Encryption to be added
-      var storeModule =
-          HiveModule.withConfig().crashRecovery(true).path(dbDir.path).build();
-      localDb = await Nitrite.builder()
-          .loadModule(storeModule)
-          .fieldSeparator('.')
-          .openOrCreate(username: 'sirius', password: 'S!rius11');
+        /// ToDo Compression and Encryption to be added
+        var storeModule = HiveModule.withConfig()
+            .crashRecovery(true)
+            .path(dbDir.path)
+            .build();
+        localDb = await Nitrite.builder()
+            .loadModule(storeModule)
+            .fieldSeparator('.')
+            .openOrCreate(username: 'sirius', password: 'S!rius11');
+      }
+      return localDb;
+    } catch (e) {
+      log.e('Failed to initialize the local database: $e');
+      throw LocalDbFailure();
     }
-    return localDb;
   }
 }

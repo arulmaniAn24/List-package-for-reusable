@@ -21,9 +21,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
     try {
       emit(state.copyWith(status: () => HomeDataStatus.loading));
       await _homeDataRepository.getHomeData();
-      print("1");
       final homeData = await _homeDataRepository.fetchHomeDataFromDB();
-      print("2");
       emit(
         state.copyWith(
           status: () => HomeDataStatus.success,

@@ -18,7 +18,6 @@ class HomeDataRepository {
       final response =
           await rootBundle.loadString('assets/data/home_data.json');
       final data = jsonDecode(response) as Map<String, dynamic>;
-      print("rootbundle data: $data");
       final homeData = HomePageData.fromJson(data);
       await saveHomeData(data);
       return homeData;

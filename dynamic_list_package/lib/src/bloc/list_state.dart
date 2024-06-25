@@ -17,7 +17,8 @@ class ListLoaded extends ListState {
   final List<String> columns;
   final bool isTableView;
 
-  const ListLoaded({required this.items, required this.columns, this.isTableView = false});
+  const ListLoaded(
+      {required this.items, required this.columns, this.isTableView = false});
 
   @override
   List<Object> get props => [items, columns, isTableView];

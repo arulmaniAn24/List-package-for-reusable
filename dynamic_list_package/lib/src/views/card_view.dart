@@ -22,7 +22,9 @@ class CardView extends StatelessWidget {
             runSpacing: 8.0,
             children: columnsToShow.map((column) {
               return SizedBox(
-                width: screenWidth < 600 ? (screenWidth / 2) - 16 : (screenWidth / 4) - 16, 
+                width: screenWidth < 600
+                    ? (screenWidth / 2) - 16
+                    : (screenWidth / 4) - 16,
                 child: Card(
                   elevation: 3,
                   child: Padding(
@@ -34,14 +36,14 @@ class CardView extends StatelessWidget {
                           column,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: screenWidth < 600 ? 14 : 16, 
+                            fontSize: screenWidth < 600 ? 14 : 16,
                           ),
                         ),
                         SizedBox(height: 4),
                         Text(
                           '${fields[column]}',
                           style: TextStyle(
-                            fontSize: screenWidth < 600 ? 12 : 14, 
+                            fontSize: screenWidth < 600 ? 12 : 14,
                           ),
                         ),
                       ],

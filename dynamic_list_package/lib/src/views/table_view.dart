@@ -12,13 +12,14 @@ class TableView extends StatefulWidget {
 }
 
 class _TableViewState extends State<TableView> {
-  int rowsPerPage = 10; // Default rows per page
-  int currentPage = 1; // Current page index
+  int rowsPerPage = 10;
+  int currentPage = 1;
 
   List<ListItem> get currentPageItems {
     final startIndex = (currentPage - 1) * rowsPerPage;
     final endIndex = startIndex + rowsPerPage;
-    return widget.items.sublist(startIndex, endIndex.clamp(0, widget.items.length));
+    return widget.items
+        .sublist(startIndex, endIndex.clamp(0, widget.items.length));
   }
 
   int get totalPages => (widget.items.length / rowsPerPage).ceil();
@@ -26,19 +27,22 @@ class _TableViewState extends State<TableView> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity, // Make the table view take full width
+      width: double.infinity,
       child: ListView(
         children: [
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: DataTable(
-              columnSpacing: 20.0, // Adjust this value to set spacing between columns
-              columns: widget.columns.map((column) => DataColumn(label: Text(column))).toList(),
+              columnSpacing: 20.0,
+              columns: widget.columns
+                  .map((column) => DataColumn(label: Text(column)))
+                  .toList(),
               rows: currentPageItems.map((item) {
                 return DataRow(
                   cells: widget.columns.map((column) {
                     return DataCell(Container(
-                      width: MediaQuery.of(context).size.width / widget.columns.length,
+                      width: MediaQuery.of(context).size.width /
+                          widget.columns.length,
                       child: Text('${item.fields[column]}'),
                     ));
                   }).toList(),
@@ -56,10 +60,11 @@ class _TableViewState extends State<TableView> {
                 onChanged: (value) {
                   setState(() {
                     rowsPerPage = value!;
-                    currentPage = 1; // Reset to the first page when rows per page changes
+                    currentPage = 1;
                   });
                 },
-                items: [10, 20, 50, 100].map<DropdownMenuItem<int>>((int value) {
+                items:
+                    [10, 20, 50, 100].map<DropdownMenuItem<int>>((int value) {
                   return DropdownMenuItem<int>(
                     value: value,
                     child: Text('$value'),

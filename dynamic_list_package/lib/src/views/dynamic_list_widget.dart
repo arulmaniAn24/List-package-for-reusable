@@ -38,7 +38,7 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
   void initState() {
     super.initState();
     isTableView = widget.defaultView == 'table';
-    context.read<ListBloc>().add(FetchItems(widget.userId)); 
+    context.read<ListBloc>().add(FetchItems(widget.userId));
   }
 
   void toggleView() {
@@ -68,7 +68,9 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
               Row(
                 children: [
                   Expanded(child: SearchWidget()),
-                  FilterIconWidget(columns: state.columns,),
+                  FilterIconWidget(
+                    columns: state.columns,
+                  ),
                   SortIconWidget(),
                   ColumnSelectionWidget(
                     allColumns: state.columns,
@@ -81,7 +83,8 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
               Expanded(
                 child: isTableView
                     ? TableView(items: state.items, columns: selectedColumns)
-                    : CardView(items: state.items, columnsToShow: selectedColumns),
+                    : CardView(
+                        items: state.items, columnsToShow: selectedColumns),
               ),
             ],
           );

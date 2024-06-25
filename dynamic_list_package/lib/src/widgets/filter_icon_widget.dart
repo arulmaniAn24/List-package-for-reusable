@@ -66,20 +66,25 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
   String? selectedOperator;
   final TextEditingController _valueController = TextEditingController();
 
-  final List<String> operators = ['Equals', 'Contains', 'Starts with', 'Ends with'];
+  final List<String> operators = [
+    'Equals',
+    'Contains',
+    'Starts with',
+    'Ends with'
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(8.0),
-      width: 300,  
+      width: 300,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           DropdownButton<String>(
             value: selectedColumn,
             hint: Text('Select Column'),
-            isExpanded: true, 
+            isExpanded: true,
             items: widget.columns.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -92,11 +97,11 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
               });
             },
           ),
-          SizedBox(height: 10),  
+          SizedBox(height: 10),
           DropdownButton<String>(
             value: selectedOperator,
             hint: Text('Select Operator'),
-            isExpanded: true,  
+            isExpanded: true,
             items: operators.map((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -125,10 +130,10 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
                 onPressed: () {
                   if (selectedColumn != null && selectedOperator != null) {
                     context.read<ListBloc>().add(FilterItems(
-                      column: selectedColumn!,
-                      operator: selectedOperator!,
-                      value: _valueController.text,
-                    ));
+                          column: selectedColumn!,
+                          operator: selectedOperator!,
+                          value: _valueController.text,
+                        ));
                     Navigator.of(context).pop();
                   }
                 },

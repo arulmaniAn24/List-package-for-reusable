@@ -1,8 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-
-
-
 class ListItem extends Equatable {
   final Map<String, dynamic> fields;
 
@@ -21,6 +18,7 @@ class ListItem extends Equatable {
 
   bool matchesQuery(String query) {
     final lowercaseQuery = query.toLowerCase();
-    return fields.values.any((value) => value.toString().toLowerCase().contains(lowercaseQuery));
+    return fields.values.any(
+        (value) => value.toString().toLowerCase().contains(lowercaseQuery));
   }
 }

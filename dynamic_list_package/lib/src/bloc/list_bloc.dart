@@ -47,8 +47,25 @@ class ListBloc extends Bloc<ListEvent, ListState> {
     }
   }
 
-  void _mapFilterItemsToState(FilterItems event, Emitter<ListState> emit) {
+void _mapFilterItemsToState(FilterItems event, Emitter<ListState> emit) {
   
+    final currentState = state;
+    if (currentState is ListLoaded) {
+      List<ListItem> filteredItems;
+      if (event.filter == 'Show All') {
+        filteredItems = originalItems;
+      } else if (event.filter == 'Filter by Name') {
+        filteredItems = originalItems.where((item) => item.fields['name'] != null).toList();
+      } else if (event.filter == 'Filter by male') {
+        filteredItems = originalItems.where((item) => item.fields['gender'] == 'male').toList();
+    
+      } else {
+        filteredItems = originalItems;
+      }
+      emit(ListLoaded(items: filteredItems, columns: currentState.columns, isTableView: currentState.isTableView));
+    }
+  
+
   }
 
   void _mapSortItemsToState(SortItems event, Emitter<ListState> emit) {

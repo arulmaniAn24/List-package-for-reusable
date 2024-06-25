@@ -9,37 +9,42 @@ class CardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return ListView.builder(
       itemCount: items.length,
       itemBuilder: (context, index) {
         final fields = items[index].fields;
-        return IntrinsicHeight(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
             children: columnsToShow.map((column) {
-              return Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Card(
-                    elevation: 3,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            column,
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
+              return SizedBox(
+                width: screenWidth < 600 ? (screenWidth / 2) - 16 : (screenWidth / 4) - 16, // Adjust width based on screen size
+                child: Card(
+                  elevation: 3,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          column,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: screenWidth < 600 ? 14 : 16, // Adjust font size based on screen width
                           ),
-                          SizedBox(height: 4),
-                          Text(
-                            '${fields[column]}',
-                            style: TextStyle(fontSize: 16),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          '${fields[column]}',
+                          style: TextStyle(
+                            fontSize: screenWidth < 600 ? 12 : 14, // Adjust font size based on screen width
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
@@ -48,7 +53,6 @@ class CardView extends StatelessWidget {
           ),
         );
       },
-    );  
+    );
   }
 }
-    

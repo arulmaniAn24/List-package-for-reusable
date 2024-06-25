@@ -19,12 +19,26 @@ class _SearchWidgetState extends State<SearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
+    return Container(
+     
+       decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(50.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 1,
+            blurRadius: 3,
+            offset: Offset(0, 2), 
+          ),
+        ],
+      ),
       child: TextField(
         controller: _controller,
-        decoration: InputDecoration(
-          labelText: 'Search',
+         decoration: InputDecoration(
+          border: InputBorder.none,
+          hintText: 'Search...',
+          prefixIcon: Icon(Icons.search, color: Colors.grey),
           suffixIcon: _controller.text.isEmpty
               ? null
               : IconButton(
@@ -35,7 +49,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                     setState(() {}); 
                   },
                 ),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 14.0),
         ),
+        
         onChanged: (query) {
           setState(() {}); 
           context.read<ListBloc>().add(SearchItems(query: query));

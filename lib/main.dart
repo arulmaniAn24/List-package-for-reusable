@@ -6,8 +6,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:dynamic_list_package/src/services/api_service.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final config = await loadConfig();
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => ListBloc(apiService: ApiService()), // Correct instantiation
+          create: (context) => ListBloc(apiService: ApiService()),
         ),
       ],
       child: MaterialApp(
@@ -41,7 +39,6 @@ class MyApp extends StatelessWidget {
             userId: config['userId'],
             filterCriteria: config['filterCriteria'],
             sortBy: config['sortBy'],
-        
             defaultView: config['defaultView'],
           ),
         ),

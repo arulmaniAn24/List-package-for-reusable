@@ -4,6 +4,7 @@ export 'src/bloc/list_bloc.dart';
 export 'src/bloc/list_event.dart';
 export 'src/bloc/list_state.dart';
 export 'src/models/list_item.dart';
+export 'src/services/api_service.dart';
 export 'src/views/dynamic_list_widget.dart';
 export 'src/widgets/search_widget.dart';
 export 'src/widgets/filter_icon_widget.dart';

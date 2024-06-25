@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-
-
 abstract class ListEvent extends Equatable {
   const ListEvent();
 
@@ -28,12 +26,18 @@ class SearchItems extends ListEvent {
 }
 
 class FilterItems extends ListEvent {
-  final String filter;
+  final String column;
+  final String operator;
+  final String value;
 
-  const FilterItems(this.filter);
+  const FilterItems({
+    required this.column,
+    required this.operator,
+    required this.value,
+  });
 
   @override
-  List<Object> get props => [filter];
+  List<Object> get props => [column, operator, value];
 }
 
 class SortItems extends ListEvent {
@@ -55,3 +59,5 @@ class UpdateColumns extends ListEvent {
 }
 
 class ToggleView extends ListEvent {}
+
+class ClearFilter extends ListEvent {}

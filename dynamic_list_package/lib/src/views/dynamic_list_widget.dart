@@ -68,7 +68,7 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
               Row(
                 children: [
                   Expanded(child: SearchWidget()),
-                  FilterIconWidget(),
+                  FilterIconWidget(columns: state.columns,),
                   SortIconWidget(),
                   ColumnSelectionWidget(
                     allColumns: state.columns,

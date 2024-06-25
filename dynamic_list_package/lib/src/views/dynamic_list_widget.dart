@@ -71,7 +71,9 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
                   FilterIconWidget(
                     columns: state.columns,
                   ),
-                  SortIconWidget(),
+                  SortIconWidget(
+                    columns: state.columns,
+                  ),
                   ColumnSelectionWidget(
                     allColumns: state.columns,
                     onColumnsChanged: updateColumns,

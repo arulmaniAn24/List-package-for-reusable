@@ -1,5 +1,7 @@
+import 'package:audiorecorder/bloc/bloc.dart';
 import 'package:audiorecorder/customaudiorecorder.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());

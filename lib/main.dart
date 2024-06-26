@@ -1,193 +1,141 @@
-// import 'package:first_app/Pages/Containterexample.dart';
-// import 'package:first_app/Pages/alertdialogbox_example.dart';
-// import 'package:first_app/Pages/barchart_example.dart';
-// import 'package:first_app/Pages/bottombarexample.dart';
-// import 'package:first_app/Pages/bottomsheetexample.dart';
-// import 'package:first_app/Pages/camera_example.dart';
-// import 'package:first_app/Pages/cardone_example.dart';
-// import 'package:first_app/Pages/columnchart_example.dart';
-// import 'package:first_app/Pages/dropdownbutton_example.dart';
-// import 'package:first_app/Pages/example_richtext.dart';
-// import 'package:first_app/Pages/examplesnackBar.dart';
-// import 'package:first_app/Pages/exampletextformfield.dart';
-// import 'package:first_app/Pages/barchart_example.dart';
-// import 'package:first_app/Pages/error_page.dart';
-// import 'package:first_app/Pages/dashboard.dart';
-// import 'package:first_app/Pages/error_page.dart';
-// import 'package:first_app/Pages/food_example.dart';
-// import 'package:first_app/Pages/grid_example.dart';
-// import 'package:first_app/Pages/lists_example.dart';
-// import 'package:first_app/Pages/login.dart';
-// import 'package:first_app/Pages/route_name.dart';
-// import 'package:first_app/Pages/routes_example.dart';
-// import 'package:first_app/Pages/workout_example.dart';
-// import 'package:first_app/Pages/formexample.dart';
-// import 'package:first_app/Pages/grid_example.dart';
-// import 'package:first_app/Pages/gridbuilder_example.dart';
-// import 'package:first_app/Pages/gridcount_example.dart';
-// import 'package:first_app/Pages/lists_example.dart';
-// import 'package:first_app/Pages/login.dart';
-// import 'package:first_app/Pages/longlistexample.dart';
-// import 'package:first_app/Pages/screen1.dart';
-// import 'package:first_app/Pages/snackBar_example.dart';
-// import 'package:first_app/Pages/splashscreen.dart';
-// import 'package:first_app/Pages/tabbar_example.dart';
-// import 'package:first_app/Pages/workout_example.dart';
-// import 'package:first_app/Arestro/dashboard_screen.dart';
-// import 'package:first_app/Arestro/forgot_screen.dart';
-// import 'package:first_app/Arestro/reset_screen.dart';
-// import 'package:first_app/Arestro/signup_screen.dart';
-// import 'package:first_app/adaptive/mobile_screen.dart';
-// import 'package:first_app/adaptive/responsive_layout.dart';
-// import 'package:first_app/api/get_api.dart';
-// import 'package:first_app/api/get_example.dart';
-// import 'package:first_app/api/getdata_api.dart';
-// import 'package:first_app/bloc/counter_bloc.dart';
-// import 'package:first_app/bloc/counter_ui_page.dart';
-// import 'package:first_app/bloc_api/user_bloc.dart';
-// import 'package:first_app/bloc_api/user_ui_page.dart';
-// import 'package:first_app/table_bloc/table_bloc.dart';
-// import 'package:first_app/table_bloc/table_ul.dart';
-import 'package:first_app/tabledata/tabledata_ui.dart';
-import 'package:first_app/tabledata/usersdata_bloc.dart';
-// import 'package:first_app/table_bloc/ui_table.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:dio/dio.dart';
-// import 'package:go_router/go_router.dart';
-// import 'package:first_app/Arestro/login_screen.dart';
-// import 'package:first_app/Arestro/route_names.dart';
-// import 'package:first_app/Arestro/start_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main(){
-  runApp(MyApp());
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  try {
+    final fcmToken = await FirebaseMessaging.instance.getToken();
+    print("Token: $fcmToken");
+  }
+  catch(e) {
+    print("Error getting FCM token: $e");
+  }
+
+  runApp(const MyApp());
 }
-// final bool isLoggedIn = true;
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
 
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home: SplashScreen() ,
-      // home:ContainerExample(),
-      // home: ExampleTextFormField(),
-      // home: RichTextExample(),
-      // home: ListExample(),
-      // home: LongListExample(),
-      // home: GridExample(),
-      // home:GridBuliderExample(),
-      // home: GridCountExample(),
-      // home: TabBarExample(),
-      // home: BottomBarExample(),
-      // home: BottomSheetExample(),
-      // home: SnackBarExample(),
-      // home: ExampleSnackBar(),
-      // home: Login(),
-      // home: FormExample(),
-      // home: DropDownExample(),
-      // home: AlertDialogboxExample(),
-      // home: CardOneExample(),
-      // home: FoodExample(),
-      // home: WorkoutExample(),
-      // home: BarChartExample(),
-      // home: ColumnChartExample(),
-      // home: CameraExample(),
-      // home: GetExample(),
-      // home: GetApi(),
-        home: BlocProvider(
-        create: (context)=> UsersDataBloc(),
-        child: TableDataUi(),
-      )
-      // home: BlocProvider(
-      //   create: (context)=> TableBloc(),
-      //   child: TableUi(),
-      // )
-      // home: UiTable(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        // This is the theme of your application.
+        //
+        // TRY THIS: Try running your application with "flutter run". You'll see
+        // the application has a purple toolbar. Then, without quitting the app,
+        // try changing the seedColor in the colorScheme below to Colors.green
+        // and then invoke "hot reload" (save your changes or press the "hot
+        // reload" button in a Flutter-supported IDE, or press "r" if you used
+        // the command line to start the app).
+        //
+        // Notice that the counter didn't reset back to zero; the application
+        // state is not lost during the reload. To reset the state, use hot
+        // restart instead.
+        //
+        // This works for code too, not just values: Most code changes can be
+        // tested with just a hot reload.
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
 
-      // home: BlocProvider(
-      //     // create: (context) => CounterBloc(),
-      //   create: (context) => UserBloc(),
-      //   child: const UserUiPage(),
-      // ),
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
-     );
-     // return MaterialApp(
-     //   debugShowCheckedModeBanner: false,
-     //   home: const MobileScreen(),
-     // );
+  // This widget is the home page of your application. It is stateful, meaning
+  // that it has a State object (defined below) that contains fields that affect
+  // how it looks.
 
+  // This class is the configuration for the state. It holds the values (in this
+  // case the title) provided by the parent (in this case the App widget) and
+  // used by the build method of the State. Fields in a Widget subclass are
+  // always marked "final".
 
-    //   return MaterialApp.router(
-    //     routerConfig: _router,
-    //   );
-    // }
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
     //
-    // final GoRouter _router = GoRouter(
-    //   //initialLocation: "/reset-password",
-    //     routes: [
-    //       GoRoute(name: RouteNames.startup, path: "/", builder: ((context, state) => StartScreen()), routes: [
-    //         GoRoute(name: RouteNames.login, path: "login", builder: ((context, state) => LoginScreen())),
-    //         GoRoute(name: RouteNames.signup, path: "signup", builder: ((context, state) => SignUpScreen())),
-    //         GoRoute(name: RouteNames.dashboard, path: "dashboard", builder: ((context, state) => DashboardScreen())),
-    //         GoRoute(name: RouteNames.forgotPassword, path: "forgot-password", builder: ((context, state) => ForgotScreen())),
-    //         GoRoute(name: RouteNames.resetPassword, path: "reset-password", builder: ((context, state) => ResetScreen()))
-    //       ]),
-    //     ]
-    // );
-
-
-    // final GoRouter _router = GoRouter(
-    //   errorBuilder: (context,state) => ErrorPage(),
-    //   // redirect: (context,state){
-    //   //   if(isLoggedIn){
-    //   //     return "/";
-    //   //   }
-    //   //   else{
-    //   //     return "/login";
-    //   //   }
-    //   // },
-    //
-    //   //   initialLocation:"/google",
-    //
-    //     routes: [
-    //       GoRoute(path: "/",builder: (context,state)=> const DashBoard(),
-    //           routes:[
-    //           //GoRoute(name: RouteNames.dashboard, path: "dashboard",builder: ((context,state)=> DashBoard())),
-    //           // GoRoute(path: "routes-example",builder: ((context,state)=> RoutesExample())),
-    //           // GoRoute(path: "routes-example/:param1",builder: ((context,state)=> RoutesExample(
-    //           //   name: state.pathParametrs["param1"]!,
-    //           // )))
-    //           // GoRoute(name: RouteNames.routeExample, path: "routes-example",builder: ((context,state)=> RoutesExample())),
-    //           // GoRoute(
-    //           //     name: RouteNames.routeExample,
-    //           //     path: "routes-example",
-    //           //     builder: ((context,state)=> RoutesExample(
-    //           //       name: state.uri.queryParameters["username"]!
-    //           //     ))
-    //           // ),
-    //
-    //           // GoRoute(
-    //           //     name: RouteNames.login ,
-    //           //     path: "/route-example",
-    //           //     pageBuilder: (context,state){
-    //           //       return CustomTransitionPage(
-    //           //         transitionDuration: const Duration(seconds: 4),
-    //           //         key: state.pageKey,
-    //           //           child: const RoutesExample(),
-    //           //           transitionsBuilder: (context, animation, secondaryAnimation, child)
-    //           //           {
-    //           //             return FadeTransition(
-    //           //                 opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
-    //           //               child: child,
-    //           //             );
-    //           //           },
-    //           //       );
-    //           //     }
-    //           // ),
-    //         ]
-    //       ),
-    //     ]
-    // );
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          // Column is also a layout widget. It takes a list of children and
+          // arranges them vertically. By default, it sizes itself to fit its
+          // children horizontally, and tries to be as tall as its parent.
+          //
+          // Column has various properties to control how it sizes itself and
+          // how it positions its children. Here we use mainAxisAlignment to
+          // center the children vertically; the main axis here is the vertical
+          // axis because Columns are vertical (the cross axis would be
+          // horizontal).
+          //
+          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
+          // action in the IDE, or press "p" in the console), to see the
+          // wireframe for each widget.
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
   }
 }

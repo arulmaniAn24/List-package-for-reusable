@@ -18,6 +18,7 @@ class ListBloc extends Bloc<ListEvent, ListState> {
     on<UpdateColumns>(_mapUpdateColumnsToState);
     on<ToggleView>(_mapToggleViewToState);
     on<ClearFilter>(_mapClearFilterToState);
+    on<ClearSort>(_mapClearSortToState);
   }
 
   Future<void> _mapFetchItemsToState(
@@ -100,13 +101,18 @@ class ListBloc extends Bloc<ListEvent, ListState> {
     final currentState = state;
     if (currentState is ListLoaded) {
       final sortedItems = List<ListItem>.from(currentState.items);
-      sortedItems.sort((a, b) => a.fields[event.sortBy]
-          .toString()
-          .compareTo(b.fields[event.sortBy].toString()));
+      sortedItems.sort((a, b) {
+        final aValue = a.fields[event.column]?.toString() ?? '';
+        final bValue = b.fields[event.column]?.toString() ?? '';
+        return event.isAscending
+            ? aValue.compareTo(bValue)
+            : bValue.compareTo(aValue);
+      });
       emit(ListLoaded(
-          items: sortedItems,
-          columns: currentState.columns,
-          isTableView: currentState.isTableView));
+        items: sortedItems,
+        columns: currentState.columns,
+        isTableView: currentState.isTableView,
+      ));
     }
   }
 
@@ -145,6 +151,17 @@ class ListBloc extends Bloc<ListEvent, ListState> {
           items: originalItems,
           columns: currentState.columns,
           isTableView: currentState.isTableView));
+    }
+  }
+
+  void _mapClearSortToState(ClearSort event, Emitter<ListState> emit) {
+    final currentState = state;
+    if (currentState is ListLoaded) {
+      emit(ListLoaded(
+        items: originalItems,
+        columns: currentState.columns,
+        isTableView: currentState.isTableView,
+      ));
     }
   }
 }

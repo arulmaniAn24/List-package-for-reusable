@@ -41,12 +41,13 @@ class FilterItems extends ListEvent {
 }
 
 class SortItems extends ListEvent {
-  final String sortBy;
+  final String column;
+  final bool isAscending;
 
-  const SortItems(this.sortBy);
+  const SortItems({required this.column, required this.isAscending});
 
   @override
-  List<Object> get props => [sortBy];
+  List<Object> get props => [column, isAscending];
 }
 
 class UpdateColumns extends ListEvent {
@@ -61,3 +62,5 @@ class UpdateColumns extends ListEvent {
 class ToggleView extends ListEvent {}
 
 class ClearFilter extends ListEvent {}
+
+class ClearSort extends ListEvent {}

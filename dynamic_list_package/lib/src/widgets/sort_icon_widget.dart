@@ -3,10 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/list_bloc.dart';
 import '../bloc/list_event.dart';
 
-class SortIconWidget extends StatelessWidget {
+class SortIconWidget extends StatefulWidget {
   final List<String> columns;
 
   SortIconWidget({required this.columns});
+
+  @override
+  _SortIconWidgetState createState() => _SortIconWidgetState();
+}
+
+class _SortIconWidgetState extends State<SortIconWidget> {
+  String? _sortedColumn;
+  bool _isAscending = true;
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +39,62 @@ class SortIconWidget extends StatelessWidget {
     showMenu(
       context: context,
       position: position,
-      items: columns.map((String column) {
-        return PopupMenuItem<String>(
-          value: column,
+      items: [
+        ...widget.columns.map((String column) {
+          return PopupMenuItem<String>(
+            value: column,
+            child: ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(column),
+                  if (_sortedColumn == column)
+                    Icon(
+                      _isAscending ? Icons.arrow_upward : Icons.arrow_downward,
+                    ),
+                ],
+              ),
+              onTap: () {
+                _onColumnSelected(column);
+              },
+            ),
+          );
+        }).toList(),
+        PopupMenuItem<String>(
+          value: 'clear_sort',
           child: ListTile(
-            title: Text(column),
+            leading: Icon(Icons.clear),
+            title: Text('Clear Sort'),
             onTap: () {
-              Navigator.pop(context, column);
+              _onClearSortSelected();
             },
           ),
-        );
-      }).toList(),
-    ).then((value) {
-      if (value != null) {
-        context.read<ListBloc>().add(SortItems(value));
+        ),
+      ],
+    );
+  }
+
+  void _onColumnSelected(String column) {
+    setState(() {
+      if (_sortedColumn == column) {
+        _isAscending = !_isAscending;
+      } else {
+        _sortedColumn = column;
+        _isAscending = true;
       }
     });
+    context
+        .read<ListBloc>()
+        .add(SortItems(column: _sortedColumn!, isAscending: _isAscending));
+    Navigator.pop(context);
+  }
+
+  void _onClearSortSelected() {
+    setState(() {
+      _sortedColumn = null;
+      _isAscending = true;
+    });
+    context.read<ListBloc>().add(ClearSort());
+    Navigator.pop(context);
   }
 }

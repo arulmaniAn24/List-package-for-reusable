@@ -1,8 +1,8 @@
 import 'package:dynamic_home/dynamic_home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:proxima/src/common/widgets/skeleton_loader.dart';
 import 'package:proxima/src/home/bloc/home_data_bloc.dart';
 import 'package:proxima/src/home/repo/home_data_repository.dart';
 
@@ -54,19 +54,14 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
             if (state.homeData != null) {
               final homeData = state.homeData;
               if (state.status == HomeDataStatus.loading) {
-                return const Center(
-                  child: CupertinoActivityIndicator(
-                    color: Colors.blue,
-                    animating: true,
-                    radius: 20,
-                  ),
-                );
+                return const Center(child: SkeletonLoader());
               } else if (state.status == HomeDataStatus.success) {
+                Locale locale = Localizations.localeOf(context);
                 return Center(
                     child: DynamicHomeWidget(
                   homePageData: homeData!,
                   leadingTitle: 'Hi, Ben',
-                  currentLanguage: 'ta',
+                  currentLanguage: locale.languageCode,
                 ));
               }
               return Center(
@@ -76,12 +71,7 @@ class _DynamicHomeViewState extends State<DynamicHomeView> {
                 ),
               );
             } else {
-              return Center(
-                child: Text(
-                  'No data found',
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-              );
+              return const Center(child: SkeletonLoader());
             }
           },
         ),

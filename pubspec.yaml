@@ -73,6 +73,8 @@ dependencies:
     path: packages/dynamic_form
   dynamic_home:
     path: packages/dynamic_home
+  shimmer: ^3.0.0
+  flutter_spinkit: ^5.2.1
 
 dev_dependencies:
   flutter_test:

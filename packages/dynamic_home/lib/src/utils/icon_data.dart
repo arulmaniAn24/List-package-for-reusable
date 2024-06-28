@@ -31,6 +31,8 @@ IconData getIcon(String input) {
       return Icons.add;
     case 'settings':
       return Icons.settings;
+    case 'search':
+      return FontAwesomeIcons.magnifyingGlass;
     case 'account':
       return Icons.account_circle;
     case 'user':

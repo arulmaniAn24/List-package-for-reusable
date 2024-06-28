@@ -2,7 +2,8 @@
     "home": {
         "field_value": "home_page",
         "page": "Home",
-        "path": "/home"
+        "path": "/home",
+        "version":  1
     },
     "home_widgets": {
         "field_value": "home_page_widgets",
@@ -66,16 +67,16 @@
                     "name": [
                         {
                             "language": "en",
-                            "value": "Settings"
+                            "value": "Search"
                         },
                         {
                             "language": "ta",
-                            "value": "செட்டிங்ஸ்"
+                            "value": "செர்ச்"
                         }
                     ],
                     "icon": {
                         "package": "font_awesome_flutter",
-                        "icon_name": "settings"
+                        "icon_name": "search"
                     },
                     "path": "/settings"
                 },
@@ -167,7 +168,7 @@
                         "top": 0
                     }
                 },
-                "fav_flex": 4,
+                "fav_flex": 3,
                 "favorite": {
                     "field_type": "favorite_inner_containor",
                     "field_value": "favorite_list_item",

@@ -10,10 +10,12 @@ Home _$HomeFromJson(Map<String, dynamic> json) => Home(
       fieldValue: json['field_value'] as String?,
       page: json['page'] as String?,
       path: json['path'] as String?,
+      version: (json['version'] as num?)?.toDouble(),
     );
 
 Map<String, dynamic> _$HomeToJson(Home instance) => <String, dynamic>{
       'field_value': instance.fieldValue,
       'page': instance.page,
       'path': instance.path,
+      'version': instance.version,
     };

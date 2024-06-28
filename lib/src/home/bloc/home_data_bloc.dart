@@ -12,6 +12,7 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
         super(const HomeDataState()) {
     on<HomeDataEvent>(_onJsonDataRequested);
   }
+
   final HomeDataRepository _homeDataRepository;
 
   Future<void> _onJsonDataRequested(
@@ -20,19 +21,38 @@ class HomeDataBloc extends Bloc<HomeDataEvent, HomeDataState> {
   ) async {
     try {
       emit(state.copyWith(status: () => HomeDataStatus.loading));
-      await _homeDataRepository.getHomeData();
-      final homeData = await _homeDataRepository.fetchHomeDataFromDB();
-      emit(
-        state.copyWith(
+
+      // Fetch local data from DB
+      final homeDataLocal = await _homeDataRepository.fetchHomeDataFromDB();
+
+      if (homeDataLocal == null) {
+        final homePageData = await _homeDataRepository.getHomeData(true);
+        emit(state.copyWith(
           status: () => HomeDataStatus.success,
-          homeData: () => homeData,
-        ),
-      );
+          homeData: () => homePageData,
+        ));
+      } else {
+        final homeDataFile = await _homeDataRepository.getHomeData(false);
+
+        if (homeDataLocal.home?.version != homeDataFile.home?.version) {
+          final homePageData = await _homeDataRepository.getHomeData(true);
+          emit(state.copyWith(
+            status: () => HomeDataStatus.success,
+            homeData: () => homePageData,
+          ));
+        } else {
+          emit(state.copyWith(
+            status: () => HomeDataStatus.success,
+            homeData: () => homeDataLocal,
+          ));
+        }
+      }
     } catch (error) {
-      state.copyWith(
+      emit(state.copyWith(
         status: () => HomeDataStatus.failure,
-        message: error.toString,
-      );
+        message: () => error.toString(),
+      ));
     }
   }
+
 }

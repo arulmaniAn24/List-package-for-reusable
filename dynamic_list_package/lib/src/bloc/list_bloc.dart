@@ -75,25 +75,36 @@ class ListBloc extends Bloc<ListEvent, ListState> {
       switch (event.operator) {
         case 'Equals':
           filteredItems = filteredItems
-              .where((item) => item.fields[event.column] == event.value)
+              .where((item) =>
+                  item.fields[event.column].toLowerCase() ==
+                  event.value.toLowerCase())
               .toList();
           break;
         case 'Contains':
           filteredItems = filteredItems
               .where((item) =>
-                  item.fields[event.column]?.contains(event.value) ?? false)
+                  item.fields[event.column]
+                      ?.toLowerCase()
+                      ?.contains(event.value.toLowerCase()) ??
+                  false)
               .toList();
           break;
         case 'Starts with':
           filteredItems = filteredItems
               .where((item) =>
-                  item.fields[event.column]?.startsWith(event.value) ?? false)
+                  item.fields[event.column]
+                      ?.toLowerCase()
+                      ?.startsWith(event.value.toLowerCase()) ??
+                  false)
               .toList();
           break;
         case 'Ends with':
           filteredItems = filteredItems
               .where((item) =>
-                  item.fields[event.column]?.endsWith(event.value) ?? false)
+                  item.fields[event.column]
+                      ?.toLowerCase()
+                      ?.endsWith(event.value.toLowerCase()) ??
+                  false)
               .toList();
           break;
         default:

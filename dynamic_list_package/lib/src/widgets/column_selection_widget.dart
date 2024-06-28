@@ -45,7 +45,10 @@ class _ColumnSelectionWidgetState extends State<ColumnSelectionWidget> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.view_column),
+      icon: Icon(
+        Icons.view_column,
+        color: Color(0xFF1F397A),
+      ),
       onPressed: () {
         showMenu(
           context: context,

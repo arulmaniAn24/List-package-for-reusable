@@ -13,7 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.6
+  flutter_svg: ^2.0.10+1
   http: ^1.2.1
+  intl: ^0.19.0
   shared_preferences: ^2.2.3
 
 dev_dependencies:
@@ -26,7 +28,8 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+  # assets:
+  #   - assets/icons/
   # To add assets to your package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

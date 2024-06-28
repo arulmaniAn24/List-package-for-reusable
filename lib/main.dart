@@ -47,25 +47,63 @@ class MyApp extends StatelessWidget {
       "data": [
         {
           "createdAt": 1719241630,
-          "name": "name 5",
-          "avatar": "avatar 5",
-          "gender": "female",
-          "mobile": "mobile 5",
-          "status": "status 5",
-          "email": "email 5",
+          "name": "Name 1",
+          "gender": "male",
+          "mobile": "9876543210",
+          "status": "status",
+          "email": "arul@gmail.com",
           "location": "location 5",
-          "id": 5
+          "id": 1
         },
         {
           "createdAt": 1719241630,
-          "name": "name 7",
-          "avatar": "avatar 5",
-          "gender": "female",
-          "mobile": "mobile 5",
-          "status": "status 5",
-          "email": "email 5",
-          "location": "location 5",
-          "id": 5
+          "name": "Name 2",
+          "gender": "Male",
+          "mobile": "98765433120",
+          "status": "status",
+          "email": "mani@gmail.com",
+          "location": "location 7",
+          "id": 2
+        },
+        {
+          "createdAt": 1719241630,
+          "name": "Name 3",
+          "gender": "Male",
+          "mobile": "98765433120",
+          "status": "status",
+          "email": "mani@gmail.com",
+          "location": "location 7",
+          "id": 2
+        },
+        {
+          "createdAt": 1719241630,
+          "name": "Name 4",
+          "gender": "Male",
+          "mobile": "98765433120",
+          "status": "status",
+          "email": "mani@gmail.com",
+          "location": "location 7",
+          "id": 2
+        },
+        {
+          "createdAt": 1719241630,
+          "name": "Name 5",
+          "gender": "Male",
+          "mobile": "98765433120",
+          "status": "status",
+          "email": "mani@gmail.com",
+          "location": "location 7",
+          "id": 2
+        },
+        {
+          "createdAt": 1719241630,
+          "name": "Name 6",
+          "gender": "Male",
+          "mobile": "98765433120",
+          "status": "status",
+          "email": "mani@gmail.com",
+          "location": "location 7",
+          "id": 2
         }
       ]
     };

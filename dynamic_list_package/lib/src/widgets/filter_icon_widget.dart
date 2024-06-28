@@ -11,7 +11,10 @@ class FilterIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.filter_list),
+      icon: Icon(
+        Icons.filter_alt,
+        color: Color(0xFF1F397A),
+      ),
       onPressed: () {
         _showFilterPopup(context);
       },

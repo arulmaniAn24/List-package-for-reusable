@@ -61,11 +61,9 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
           return Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Expanded(child: SearchWidget()),
-                  FilterIconWidget(
-                    columns: state.columns,
-                  ),
+                  // Expanded(child: SearchWidget()),
                   SortIconWidget(
                     columns: state.columns,
                   ),
@@ -74,7 +72,14 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
                     onColumnsChanged: updateColumns,
                     initiallySelectedColumns: selectedColumns,
                   ),
-                  ViewToggleButton(onViewChanged: toggleView),
+                  FilterIconWidget(
+                    columns: state.columns,
+                  ),
+
+                  ViewToggleButton(
+                    onViewChanged: toggleView,
+                    isTableView: isTableView,
+                  ),
                 ],
               ),
               Expanded(

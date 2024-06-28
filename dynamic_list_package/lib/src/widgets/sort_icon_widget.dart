@@ -19,7 +19,10 @@ class _SortIconWidgetState extends State<SortIconWidget> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      icon: Icon(Icons.sort),
+      icon: Icon(
+        Icons.sort,
+        color: Color(0xFF1F397A),
+      ),
       onPressed: () {
         _showSortPopup(context);
       },

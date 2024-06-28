@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
+import '../models/response_model.dart';
+
 abstract class ListEvent extends Equatable {
   const ListEvent();
 
@@ -8,12 +10,12 @@ abstract class ListEvent extends Equatable {
 }
 
 class FetchItems extends ListEvent {
-  final int userId;
+  final ResponseModel response;
 
-  const FetchItems(this.userId);
+  const FetchItems(this.response);
 
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [response];
 }
 
 class SearchItems extends ListEvent {

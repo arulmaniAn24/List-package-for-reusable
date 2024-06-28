@@ -1,16 +1,16 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import '../models/list_item.dart';
-import '../services/api_service.dart';
+import '../models/table_setting.dart';
 import 'list_event.dart';
 import 'list_state.dart';
 
 class ListBloc extends Bloc<ListEvent, ListState> {
-  final ApiService apiService;
   List<ListItem> originalItems = [];
   List<ListItem> currentItems = [];
+  late TableSetting tableSetting;
 
-  ListBloc({required this.apiService}) : super(ListInitial()) {
+  ListBloc() : super(ListInitial()) {
     on<FetchItems>(_mapFetchItemsToState);
     on<SearchItems>(_mapSearchItemsToState);
     on<FilterItems>(_mapFilterItemsToState);
@@ -23,11 +23,17 @@ class ListBloc extends Bloc<ListEvent, ListState> {
 
   Future<void> _mapFetchItemsToState(
       FetchItems event, Emitter<ListState> emit) async {
+    print('Fetching items');
     emit(ListLoading());
     try {
-      final List<ListItem> items = await ApiService.fetchUserData(event.userId);
-      originalItems = items;
-      emit(ListLoaded(items: items, columns: _getColumns(items)));
+      tableSetting = event.response.tableSetting;
+      originalItems = event.response.data;
+
+      print('Fetched items: ${originalItems.length} items');
+      emit(ListLoaded(
+        items: originalItems,
+        columns: _getColumns(originalItems),
+      ));
     } catch (e) {
       emit(ListError(message: 'Failed to fetch items: $e'));
     }
@@ -44,8 +50,10 @@ class ListBloc extends Bloc<ListEvent, ListState> {
             isTableView: currentState.isTableView));
       } else {
         try {
-          final List<ListItem> searchResults =
-              await apiService.searchItems(event.query, originalItems);
+          final List<ListItem> searchResults = originalItems.where((item) {
+            return item.fields.values
+                .any((value) => value.toString().contains(event.query));
+          }).toList();
           emit(ListLoaded(
               items: searchResults,
               columns: currentState.columns,
@@ -62,6 +70,8 @@ class ListBloc extends Bloc<ListEvent, ListState> {
     if (currentState is ListLoaded) {
       List<ListItem> filteredItems = originalItems;
 
+      print(
+          'Applying filter with column: ${event.column}, operator: ${event.operator}, value: ${event.value}');
       switch (event.operator) {
         case 'Equals':
           filteredItems = filteredItems

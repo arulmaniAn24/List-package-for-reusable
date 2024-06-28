@@ -4,6 +4,7 @@ import '../bloc/list_bloc.dart';
 import '../bloc/list_state.dart';
 import '../bloc/list_event.dart';
 import '../models/list_item.dart';
+import '../models/response_model.dart';
 import '../services/api_service.dart';
 import 'card_view.dart';
 import 'table_view.dart';
@@ -14,17 +15,9 @@ import '../widgets/column_selection_widget.dart';
 import '../widgets/view_toggle_button.dart';
 
 class DynamicListWidget extends StatefulWidget {
-  final int userId;
-  final String filterCriteria;
-  final String sortBy;
-  final String defaultView;
+  final ResponseModel response;
 
-  DynamicListWidget({
-    required this.userId,
-    required this.filterCriteria,
-    required this.sortBy,
-    required this.defaultView,
-  });
+  DynamicListWidget({required this.response});
 
   @override
   _DynamicListWidgetState createState() => _DynamicListWidgetState();
@@ -37,8 +30,10 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
   @override
   void initState() {
     super.initState();
-    isTableView = widget.defaultView == 'table';
-    context.read<ListBloc>().add(FetchItems(widget.userId));
+    isTableView = widget.response.tableSetting.defaultView == 'table';
+    selectedColumns = widget.response.tableSetting.columnsToShow;
+    context.read<ListBloc>().add(FetchItems(widget.response));
+    print('DynamicListWidget initState: isTableView=$isTableView');
   }
 
   void toggleView() {

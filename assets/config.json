@@ -1,8 +1,23 @@
 {
-    "userId": 123,
-    "filterCriteria": "category",
-    "sortBy": "name",
-    "columnsToShow": 5,
-    "defaultView": "card"
-  }
-  
+  "table_setting": {
+    "sort": {
+      "field_name": "name",
+      "sort_by": "ASCE / DESC"
+    },
+    "columns_to_show": [],
+    "default_view": "card"
+  },
+  "data": [
+    {
+      "createdAt": 1719241630,
+      "name": "name 5",
+      "avatar": "avatar 5",
+      "gender": "female",
+      "mobile": "mobile 5",
+      "status": "status 5",
+      "email": "email 5",
+      "location": "location 5",
+      "id": 5
+    }
+  ]
+}

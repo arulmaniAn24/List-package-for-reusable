@@ -13,3 +13,5 @@ export 'src/widgets/column_selection_widget.dart';
 export 'src/widgets/view_toggle_button.dart';
 export 'src/views/card_view.dart';
 export 'src/views/table_view.dart';
+export 'src/models/response_model.dart';
+export 'src/models/table_setting.dart';

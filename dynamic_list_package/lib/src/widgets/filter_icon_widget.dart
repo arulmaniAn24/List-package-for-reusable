@@ -34,7 +34,10 @@ class FilterIconWidget extends StatelessWidget {
       items: [
         PopupMenuItem(
           enabled: false,
-          child: FilterPopupContent(columns: columns),
+          child: BlocProvider.value(
+            value: BlocProvider.of<ListBloc>(context),
+            child: FilterPopupContent(columns: columns),
+          ),
         ),
         PopupMenuItem(
           value: 'Clear Filter',

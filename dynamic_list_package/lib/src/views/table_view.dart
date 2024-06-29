@@ -33,87 +33,102 @@ class _TableViewState extends State<TableView> {
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: ListView(
-            children: [
-              DataTable(
-                dataRowHeight: 60.0,
-                columnSpacing: 20.0,
-                headingRowHeight: 70.0,
-                headingRowColor:
-                    MaterialStateColor.resolveWith((states) => headingRowColor),
-                headingTextStyle: TextStyle(
-                  fontFamily: 'Poppins',
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w500,
-                  height: 1.5,
-                  color: tableHeadingColor,
-                ),
-                columns: [
-                  DataColumn(label: Text('Avatar')),
-                  ...widget.columns
-                      .sublist(1)
-                      .map((column) => DataColumn(label: Text(column))),
-                  DataColumn(label: const Text('Actions')),
-                ],
-                rows: currentPageItems.map((item) {
-                  return DataRow(
-                    cells: [
-                      DataCell(
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: CircleAvatar(
-                            radius: 30,
-                            backgroundColor: const Color(0xFF1F397A),
-                            child: const Icon(
-                              Icons.person,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
+        child: DataTable(
+          columnSpacing: 20.0,
+          headingRowHeight: 70.0,
+          headingRowColor:
+              MaterialStateColor.resolveWith((states) => headingRowColor),
+          headingTextStyle: TextStyle(
+            fontFamily: 'Poppins',
+            fontSize: 20.0,
+            fontWeight: FontWeight.w500,
+            height: 1.5,
+            color: tableHeadingColor,
+          ),
+          columns: [
+            DataColumn(label: Text('Avatar')),
+            ...widget.columns
+                .sublist(1)
+                .map((column) => DataColumn(label: Text(column))),
+            DataColumn(label: const Text('Actions')),
+          ],
+          rows: currentPageItems.map((item) {
+            return DataRow(
+              cells: [
+                DataCell(
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: const Color(0xFF1F397A),
+                      child: const Icon(
+                        Icons.person,
+                        color: Colors.white,
                       ),
-                      ...widget.columns.sublist(1).map((column) {
-                        return DataCell(
-                          Text(
-                            '${item.fields[column]}',
-                            style: const TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.w500,
-                              height: 1.5,
-                              color: Color(0xFF727272),
-                            ),
-                          ),
-                        );
-                      }).toList(),
-                      DataCell(Row(
-                        children: [
-                          IconButton(
-                            icon: const Icon(Icons.edit),
-                            onPressed: () {
-                              _editItem(context, item.fields);
-                            },
-                          ),
-                          IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              _deleteItem(context, item);
-                            },
-                          ),
-                        ],
-                      )),
-                    ],
+                    ),
+                  ),
+                ),
+                ...widget.columns.sublist(1).map((column) {
+                  return DataCell(
+                    Container(
+                      width: double.infinity,
+                      constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width /
+                              widget.columns.length),
+                      child: Text(
+                        '${item.fields[column]}',
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w500,
+                          height: 1.5,
+                          color: Color(0xFF727272),
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                    ),
                   );
                 }).toList(),
-              ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
+                DataCell(
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.edit),
+                        onPressed: () {
+                          _editItem(context, item.fields);
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete),
+                        onPressed: () {
+                          _deleteItem(context, item);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }).toList(),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            bool isSmallScreen = constraints.maxWidth < 600;
+
+            return Row(
+              mainAxisAlignment: isSmallScreen
+                  ? MainAxisAlignment.spaceBetween
+                  : MainAxisAlignment.end,
+              children: [
+                Flexible(
+                  flex: isSmallScreen ? 2 : 1,
+                  child: Text(
                     'Rows per page: ',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'Poppins',
                       fontSize: 20.0,
                       fontWeight: FontWeight.w500,
@@ -121,7 +136,10 @@ class _TableViewState extends State<TableView> {
                       color: Color(0xFF727272),
                     ),
                   ),
-                  DropdownButton<int>(
+                ),
+                Flexible(
+                  flex: isSmallScreen ? 1 : 0,
+                  child: DropdownButton<int>(
                     value: rowsPerPage,
                     onChanged: (value) {
                       setState(() {
@@ -137,41 +155,41 @@ class _TableViewState extends State<TableView> {
                       );
                     }).toList(),
                   ),
-                  const SizedBox(width: 20),
-                  Text(
-                    'Page: $currentPage of $totalPages',
-                    style: const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5,
-                      color: Color(0xFF727272),
-                    ),
+                ),
+                if (!isSmallScreen) SizedBox(width: 20),
+                Text(
+                  'Page: $currentPage of $totalPages',
+                  style: TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                    color: Color(0xFF727272),
                   ),
-                  IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_left),
-                    onPressed: currentPage > 1
-                        ? () {
-                            setState(() {
-                              currentPage--;
-                            });
-                          }
-                        : null,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_right),
-                    onPressed: currentPage < totalPages
-                        ? () {
-                            setState(() {
-                              currentPage++;
-                            });
-                          }
-                        : null,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+                IconButton(
+                  icon: Icon(Icons.keyboard_arrow_left),
+                  onPressed: currentPage > 1
+                      ? () {
+                          setState(() {
+                            currentPage--;
+                          });
+                        }
+                      : null,
+                ),
+                IconButton(
+                  icon: Icon(Icons.keyboard_arrow_right),
+                  onPressed: currentPage < totalPages
+                      ? () {
+                          setState(() {
+                            currentPage++;
+                          });
+                        }
+                      : null,
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
@@ -211,7 +229,6 @@ class _TableViewState extends State<TableView> {
             ),
             ElevatedButton(
               onPressed: () {
-                // Implement save functionality
                 Navigator.pop(context);
               },
               child: const Text('Save'),

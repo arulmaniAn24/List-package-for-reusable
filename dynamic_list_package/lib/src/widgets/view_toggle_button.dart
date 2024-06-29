@@ -8,11 +8,49 @@ class ViewToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: isTableView
-          ? Icon(Icons.table_rows_sharp, color: Color(0xFF1F397A))
-          : Icon(Icons.grid_view, color: Color(0xFF1F397A)),
-      onPressed: onViewChanged,
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        _buildIconButton(
+          icon: Icons.grid_view,
+          isActive: !isTableView,
+          onTap: () {
+            if (isTableView) {
+              onViewChanged();
+            }
+          },
+        ),
+        _buildIconButton(
+          icon: Icons.view_list,
+          isActive: isTableView,
+          onTap: () {
+            if (!isTableView) {
+              onViewChanged();
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+  Widget _buildIconButton({
+    required IconData icon,
+    required bool isActive,
+    required Function() onTap,
+  }) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        decoration: BoxDecoration(
+          color: isActive ? Color(0xFF1F397A) : Color(0xFFE9EBF2),
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        padding: EdgeInsets.all(8.0),
+        child: Icon(
+          icon,
+          color: isActive ? Colors.white : Color(0xFF1F397A),
+        ),
+      ),
     );
   }
 }

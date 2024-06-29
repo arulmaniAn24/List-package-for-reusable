@@ -82,6 +82,9 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 10,
+              ),
               Expanded(
                 child: isTableView
                     ? TableView(items: state.items, columns: selectedColumns)

@@ -32,12 +32,11 @@ class _TableViewState extends State<TableView> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Container(
-          width: MediaQuery.of(context).size.width,
-          child: ListView(
-            children: [
-              DataTable(
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: DataTable(
                 dataRowHeight: 60.0,
                 columnSpacing: 20.0,
                 headingRowHeight: 70.0,
@@ -107,71 +106,71 @@ class _TableViewState extends State<TableView> {
                   );
                 }).toList(),
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  const Text(
-                    'Rows per page: ',
-                    style: const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5,
-                      color: Color(0xFF727272),
-                    ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text(
+                  'Rows per page: ',
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                    color: Color(0xFF727272),
                   ),
-                  DropdownButton<int>(
-                    value: rowsPerPage,
-                    onChanged: (value) {
-                      setState(() {
-                        rowsPerPage = value!;
-                        currentPage = 1;
-                      });
-                    },
-                    items: [10, 20, 50, 100]
-                        .map<DropdownMenuItem<int>>((int value) {
-                      return DropdownMenuItem<int>(
-                        value: value,
-                        child: Text('$value'),
-                      );
-                    }).toList(),
+                ),
+                DropdownButton<int>(
+                  value: rowsPerPage,
+                  onChanged: (value) {
+                    setState(() {
+                      rowsPerPage = value!;
+                      currentPage = 1;
+                    });
+                  },
+                  items:
+                      [10, 20, 50, 100].map<DropdownMenuItem<int>>((int value) {
+                    return DropdownMenuItem<int>(
+                      value: value,
+                      child: Text('$value'),
+                    );
+                  }).toList(),
+                ),
+                const SizedBox(width: 20),
+                Text(
+                  'Page: $currentPage of $totalPages',
+                  style: const TextStyle(
+                    fontFamily: 'Poppins',
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.w500,
+                    height: 1.5,
+                    color: Color(0xFF727272),
                   ),
-                  const SizedBox(width: 20),
-                  Text(
-                    'Page: $currentPage of $totalPages',
-                    style: const TextStyle(
-                      fontFamily: 'Poppins',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5,
-                      color: Color(0xFF727272),
-                    ),
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_left),
-                    onPressed: currentPage > 1
-                        ? () {
-                            setState(() {
-                              currentPage--;
-                            });
-                          }
-                        : null,
-                  ),
-                  IconButton(
-                    icon: const Icon(Icons.keyboard_arrow_right),
-                    onPressed: currentPage < totalPages
-                        ? () {
-                            setState(() {
-                              currentPage++;
-                            });
-                          }
-                        : null,
-                  ),
-                ],
-              ),
-            ],
-          ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_left),
+                  onPressed: currentPage > 1
+                      ? () {
+                          setState(() {
+                            currentPage--;
+                          });
+                        }
+                      : null,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.keyboard_arrow_right),
+                  onPressed: currentPage < totalPages
+                      ? () {
+                          setState(() {
+                            currentPage++;
+                          });
+                        }
+                      : null,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

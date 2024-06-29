@@ -28,6 +28,7 @@ class _TableViewState extends State<TableView> {
   Widget build(BuildContext context) {
     final Color tableHeadingColor = const Color(0xFF3C3D43);
     final Color columnsColor = const Color(0xFF727272);
+    final Color headingRowColor = const Color(0xFFE9EBF2);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -40,6 +41,8 @@ class _TableViewState extends State<TableView> {
                 dataRowHeight: 60.0,
                 columnSpacing: 20.0,
                 headingRowHeight: 70.0,
+                headingRowColor:
+                    MaterialStateColor.resolveWith((states) => headingRowColor),
                 headingTextStyle: TextStyle(
                   fontFamily: 'Poppins',
                   fontSize: 20.0,

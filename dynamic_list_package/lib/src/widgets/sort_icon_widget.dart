@@ -20,7 +20,7 @@ class _SortIconWidgetState extends State<SortIconWidget> {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(
-        Icons.sort,
+        Icons.import_export,
         color: Color(0xFF1F397A),
       ),
       onPressed: () {

@@ -26,95 +26,109 @@ class _TableViewState extends State<TableView> {
 
   @override
   Widget build(BuildContext context) {
-    final Color tableHeadingColor = const Color(0xFF3C3D43);
-    final Color columnsColor = const Color(0xFF727272);
-    final Color headingRowColor = const Color(0xFFE9EBF2);
+    const Color tableHeadingColor = Color(0xFF3C3D43);
+    const Color columnsColor = Color(0xFF727272);
+    const Color headingRowColor = Color(0xFFE9EBF2);
 
     return Scaffold(
       body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: DataTable(
-          columnSpacing: 20.0,
-          headingRowHeight: 70.0,
-          headingRowColor:
-              MaterialStateColor.resolveWith((states) => headingRowColor),
-          headingTextStyle: TextStyle(
-            fontFamily: 'Poppins',
-            fontSize: 20.0,
-            fontWeight: FontWeight.w500,
-            height: 1.5,
-            color: tableHeadingColor,
-          ),
-          columns: [
-            DataColumn(label: Text('Avatar')),
-            ...widget.columns
-                .sublist(1)
-                .map((column) => DataColumn(label: Text(column))),
-            DataColumn(label: const Text('Actions')),
-          ],
-          rows: currentPageItems.map((item) {
-            return DataRow(
-              cells: [
-                DataCell(
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: CircleAvatar(
-                      radius: 30,
-                      backgroundColor: const Color(0xFF1F397A),
-                      child: const Icon(
-                        Icons.person,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                ...widget.columns.sublist(1).map((column) {
-                  return DataCell(
-                    Container(
-                      width: double.infinity,
-                      constraints: BoxConstraints(
-                          maxWidth: MediaQuery.of(context).size.width /
-                              widget.columns.length),
-                      child: Text(
-                        '${item.fields[column]}',
-                        style: const TextStyle(
-                          fontFamily: 'Poppins',
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w500,
-                          height: 1.5,
-                          color: Color(0xFF727272),
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 2,
-                      ),
-                    ),
-                  );
-                }).toList(),
-                DataCell(
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () {
-                          _editItem(context, item.fields);
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.delete),
-                        onPressed: () {
-                          _deleteItem(context, item);
-                        },
-                      ),
-                    ],
-                  ),
-                ),
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: MediaQuery.of(context).size.width,
+            ),
+            child: DataTable(
+              columnSpacing: 20.0,
+              headingRowHeight: 70.0,
+              headingRowColor:
+                  MaterialStateColor.resolveWith((states) => headingRowColor),
+              headingTextStyle: const TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 20.0,
+                fontWeight: FontWeight.w500,
+                height: 1.5,
+                color: tableHeadingColor,
+              ),
+              columns: [
+                const DataColumn(label: Text('Avatar')),
+                ...widget.columns
+                    .sublist(1)
+                    .map((column) => DataColumn(label: Text(column))),
+                const DataColumn(label: Text('Actions')),
               ],
-            );
-          }).toList(),
+              rows: currentPageItems.map((item) {
+                return DataRow(
+                  cells: [
+                    const DataCell(
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: CircleAvatar(
+                          radius: 30,
+                          backgroundColor: Color(0xFF1F397A),
+                          child: Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    ...widget.columns.sublist(1).map((column) {
+                      return DataCell(
+                        SizedBox(
+                          width: double.infinity,
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(
+                              minWidth: 150,
+                              maxWidth: 300,
+                            ),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Text(
+                                '${item.fields[column]}',
+                                style: const TextStyle(
+                                  fontFamily: 'Poppins',
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.5,
+                                  color: Color(0xFF727272),
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                    DataCell(
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: const Icon(Icons.edit),
+                            onPressed: () {
+                              _editItem(context, item.fields);
+                            },
+                          ),
+                          IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              _deleteItem(context, item);
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              }).toList(),
+            ),
+          ),
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 4.0),
         child: LayoutBuilder(
           builder: (context, constraints) {
             bool isSmallScreen = constraints.maxWidth < 600;
@@ -126,7 +140,7 @@ class _TableViewState extends State<TableView> {
               children: [
                 Flexible(
                   flex: isSmallScreen ? 2 : 1,
-                  child: Text(
+                  child: const Text(
                     'Rows per page: ',
                     style: TextStyle(
                       fontFamily: 'Poppins',
@@ -156,10 +170,10 @@ class _TableViewState extends State<TableView> {
                     }).toList(),
                   ),
                 ),
-                if (!isSmallScreen) SizedBox(width: 20),
+                if (!isSmallScreen) const SizedBox(width: 10),
                 Text(
                   'Page: $currentPage of $totalPages',
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontSize: 20.0,
                     fontWeight: FontWeight.w500,
@@ -168,7 +182,7 @@ class _TableViewState extends State<TableView> {
                   ),
                 ),
                 IconButton(
-                  icon: Icon(Icons.keyboard_arrow_left),
+                  icon: const Icon(Icons.keyboard_arrow_left),
                   onPressed: currentPage > 1
                       ? () {
                           setState(() {
@@ -178,7 +192,7 @@ class _TableViewState extends State<TableView> {
                       : null,
                 ),
                 IconButton(
-                  icon: Icon(Icons.keyboard_arrow_right),
+                  icon: const Icon(Icons.keyboard_arrow_right),
                   onPressed: currentPage < totalPages
                       ? () {
                           setState(() {

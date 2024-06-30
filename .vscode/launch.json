@@ -1,0 +1,45 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "PGR-tasks",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "PGR-tasks (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "PGR-tasks (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "dynamic_list_package",
+            "cwd": "dynamic_list_package",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "dynamic_list_package (profile mode)",
+            "cwd": "dynamic_list_package",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "dynamic_list_package (release mode)",
+            "cwd": "dynamic_list_package",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

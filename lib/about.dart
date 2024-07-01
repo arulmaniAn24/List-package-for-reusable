@@ -27,7 +27,6 @@ class _AboutState extends State<About> {
             Text('${message?.notification?.title}'),
             Text('${message?.notification?.body}'),
             Text('Payload: ${message?.data.toString() ?? 'No Payload'}'),
-            // Text('message?.notification?.title ??'),
           ],
         ),
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task1/FilePicker/fileupload.dart';
 
-import 'bloc/filebloc.dart';
+import 'package:task1/File_Picker/FilePicker/fileupload.dart';
+
+import 'Image_Picker/ImagePicker/imageupload.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const DocumentUpload(),
+      home: const ImageUpload(),
     );
   }
 }

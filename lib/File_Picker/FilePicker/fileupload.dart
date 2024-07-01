@@ -9,8 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../bloc/filebloc.dart';
 import '../bloc/fileevent.dart';
 import '../bloc/filestate.dart';
-import '../constants/colors.dart';
+
 import 'package:file_picker/file_picker.dart';
+import '../constants/colors.dart';
 import 'filecard.dart';
 
 class DocumentUpload extends StatefulWidget {

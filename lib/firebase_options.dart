@@ -41,47 +41,47 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDf6y6gpBITMCBGmcMpDTm-3Ee5UE1CzYE',
-    appId: '1:1093519072396:web:057f8074236b5a0e59efa9',
-    messagingSenderId: '1093519072396',
-    projectId: 'flutter-notification-91ae5',
-    authDomain: 'flutter-notification-91ae5.firebaseapp.com',
-    storageBucket: 'flutter-notification-91ae5.appspot.com',
+    apiKey: 'AIzaSyCOmDT9WDsguHPQtK5YnL_bsbpr2c6sw8k',
+    appId: '1:720182226573:web:e18495740b0aee98bbbcc4',
+    messagingSenderId: '720182226573',
+    projectId: 'push-notification-63a01',
+    authDomain: 'push-notification-63a01.firebaseapp.com',
+    storageBucket: 'push-notification-63a01.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBryUCz56hUWzs113dywm5a5tKmeVnrG4o',
-    appId: '1:1093519072396:android:344961ce335b649c59efa9',
-    messagingSenderId: '1093519072396',
-    projectId: 'flutter-notification-91ae5',
-    storageBucket: 'flutter-notification-91ae5.appspot.com',
+    apiKey: 'AIzaSyCy6rFNi-XoDqyEwzd4A9_2gMx9uc50dQ4',
+    appId: '1:720182226573:android:b644717162845fd1bbbcc4',
+    messagingSenderId: '720182226573',
+    projectId: 'push-notification-63a01',
+    storageBucket: 'push-notification-63a01.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyALMyPOeAoyM6K8Qs78eHJ99D9Vaxliw0E',
-    appId: '1:1093519072396:ios:777abb6e9019e4b159efa9',
-    messagingSenderId: '1093519072396',
-    projectId: 'flutter-notification-91ae5',
-    storageBucket: 'flutter-notification-91ae5.appspot.com',
+    apiKey: 'AIzaSyCvOe126w_d-gTzB4D-uGGvbXwVQ_Ne9f8',
+    appId: '1:720182226573:ios:4dc67cc9a52ff993bbbcc4',
+    messagingSenderId: '720182226573',
+    projectId: 'push-notification-63a01',
+    storageBucket: 'push-notification-63a01.appspot.com',
     iosBundleId: 'com.example.pushNotification',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyALMyPOeAoyM6K8Qs78eHJ99D9Vaxliw0E',
-    appId: '1:1093519072396:ios:777abb6e9019e4b159efa9',
-    messagingSenderId: '1093519072396',
-    projectId: 'flutter-notification-91ae5',
-    storageBucket: 'flutter-notification-91ae5.appspot.com',
+    apiKey: 'AIzaSyCvOe126w_d-gTzB4D-uGGvbXwVQ_Ne9f8',
+    appId: '1:720182226573:ios:4dc67cc9a52ff993bbbcc4',
+    messagingSenderId: '720182226573',
+    projectId: 'push-notification-63a01',
+    storageBucket: 'push-notification-63a01.appspot.com',
     iosBundleId: 'com.example.pushNotification',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDf6y6gpBITMCBGmcMpDTm-3Ee5UE1CzYE',
-    appId: '1:1093519072396:web:54c21aa42f95e7ba59efa9',
-    messagingSenderId: '1093519072396',
-    projectId: 'flutter-notification-91ae5',
-    authDomain: 'flutter-notification-91ae5.firebaseapp.com',
-    storageBucket: 'flutter-notification-91ae5.appspot.com',
+    apiKey: 'AIzaSyCOmDT9WDsguHPQtK5YnL_bsbpr2c6sw8k',
+    appId: '1:720182226573:web:eaf223e3108574a4bbbcc4',
+    messagingSenderId: '720182226573',
+    projectId: 'push-notification-63a01',
+    authDomain: 'push-notification-63a01.firebaseapp.com',
+    storageBucket: 'push-notification-63a01.appspot.com',
   );
 
 }

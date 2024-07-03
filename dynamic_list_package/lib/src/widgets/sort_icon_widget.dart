@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../bloc/list_bloc.dart';
 import '../bloc/list_event.dart';
 
@@ -18,14 +19,19 @@ class _SortIconWidgetState extends State<SortIconWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        Icons.import_export,
-        color: Color(0xFF1F397A),
-      ),
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         _showSortPopup(context);
       },
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: SvgPicture.asset(
+          'assets/images/sortby.svg',
+          width: 20,
+          height: 20,
+          color: const Color(0xFF1F397A),
+        ),
+      ),
     );
   }
 
@@ -66,8 +72,8 @@ class _SortIconWidgetState extends State<SortIconWidget> {
         PopupMenuItem<String>(
           value: 'clear_sort',
           child: ListTile(
-            leading: Icon(Icons.clear),
-            title: Text('Clear Sort'),
+            leading: const Icon(Icons.clear),
+            title: const Text('Clear Sort'),
             onTap: () {
               _onClearSortSelected();
             },

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../bloc/list_bloc.dart';
 import '../bloc/list_event.dart';
 
@@ -10,14 +11,19 @@ class FilterIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        Icons.filter_alt,
-        color: Color(0xFF1F397A),
-      ),
-      onPressed: () {
+    return GestureDetector(
+      onTap: () {
         _showFilterPopup(context);
       },
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: SvgPicture.asset(
+          'assets/images/filter.svg',
+          width: 20,
+          height: 20,
+          color: const Color(0xFF1F397A),
+        ),
+      ),
     );
   }
 
@@ -42,7 +48,7 @@ class FilterIconWidget extends StatelessWidget {
             child: FilterPopupContent(columns: columns),
           ),
         ),
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'Clear Filter',
           child: ListTile(
             leading: Icon(Icons.clear),
@@ -82,14 +88,14 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       width: 300,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           DropdownButton<String>(
             value: selectedColumn,
-            hint: Text('Select Column'),
+            hint: const Text('Select Column'),
             isExpanded: true,
             items: widget.columns.map((String value) {
               return DropdownMenuItem<String>(
@@ -103,10 +109,10 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
               });
             },
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           DropdownButton<String>(
             value: selectedOperator,
-            hint: Text('Select Operator'),
+            hint: const Text('Select Operator'),
             isExpanded: true,
             items: operators.map((String value) {
               return DropdownMenuItem<String>(
@@ -120,15 +126,15 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
               });
             },
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           TextField(
             controller: _valueController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'Value',
               border: OutlineInputBorder(),
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -143,7 +149,7 @@ class _FilterPopupContentState extends State<FilterPopupContent> {
                     Navigator.of(context).pop();
                   }
                 },
-                child: Text('Filter'),
+                child: const Text('Filter'),
               ),
             ],
           ),

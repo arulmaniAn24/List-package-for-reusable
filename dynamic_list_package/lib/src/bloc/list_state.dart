@@ -35,3 +35,9 @@ class ListError extends ListState {
   @override
   List<Object> get props => [message];
 }
+
+class ListDownloaded extends ListState {
+  final String message;
+
+  ListDownloaded({required this.message});
+}

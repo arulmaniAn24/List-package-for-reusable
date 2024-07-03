@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 import '../models/response_model.dart';
 
@@ -66,3 +67,17 @@ class ToggleView extends ListEvent {}
 class ClearFilter extends ListEvent {}
 
 class ClearSort extends ListEvent {}
+
+class DownloadCsv extends ListEvent {
+  // final BuildContext context;
+
+  // DownloadCsv(
+  //   this.context,
+  // );
+}
+
+class PrintPdf extends ListEvent {
+  // final BuildContext context;
+
+  // PrintPdf(this.context);
+}

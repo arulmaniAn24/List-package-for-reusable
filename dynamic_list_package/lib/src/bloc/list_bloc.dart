@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'dart:html' as html;
 import '../models/list_item.dart';
 import '../models/table_setting.dart';
+import 'package:csv/csv.dart';
+import 'package:pdf/widgets.dart' as pw;
 import 'list_event.dart';
 import 'list_state.dart';
 
@@ -19,6 +23,8 @@ class ListBloc extends Bloc<ListEvent, ListState> {
     on<ToggleView>(_mapToggleViewToState);
     on<ClearFilter>(_mapClearFilterToState);
     on<ClearSort>(_mapClearSortToState);
+    on<DownloadCsv>(_mapDownloadCsvToState);
+    on<PrintPdf>(_mapPrintPdfToState);
   }
 
   Future<void> _mapFetchItemsToState(
@@ -183,6 +189,84 @@ class ListBloc extends Bloc<ListEvent, ListState> {
         columns: currentState.columns,
         isTableView: currentState.isTableView,
       ));
+    }
+  }
+
+  Future<void> _mapDownloadCsvToState(
+      DownloadCsv event, Emitter<ListState> emit) async {
+    try {
+      final columns = tableSetting.columnsToShow.isEmpty
+          ? _getColumns(originalItems)
+          : tableSetting.columnsToShow;
+
+      if (columns.isEmpty || originalItems.isEmpty) {
+        emit(const ListError(message: 'No columns available to export.'));
+        return;
+      }
+
+      final csvData = [
+        columns,
+        ...originalItems.map((item) => columns
+            .map((column) => item.fields[column]?.toString() ?? '')
+            .toList()),
+      ];
+
+      print('CSV Data: $csvData');
+
+      String csv = const ListToCsvConverter().convert(csvData);
+      final bytes = utf8.encode(csv);
+      final blob = html.Blob([bytes]);
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      final anchor = html.AnchorElement(href: url)
+        ..setAttribute('download', 'table_data.csv')
+        ..click();
+
+      html.Url.revokeObjectUrl(url);
+
+      emit(ListDownloaded(message: 'CSV downloaded'));
+    } catch (e) {
+      emit(ListError(message: 'Failed to download CSV: $e'));
+    }
+  }
+
+  Future<void> _mapPrintPdfToState(
+      PrintPdf event, Emitter<ListState> emit) async {
+    try {
+      final columns = tableSetting.columnsToShow.isEmpty
+          ? _getColumns(originalItems)
+          : tableSetting.columnsToShow;
+
+      if (columns.isEmpty || originalItems.isEmpty) {
+        emit(const ListError(message: 'No columns available to export.'));
+        return;
+      }
+
+      final pdf = pw.Document();
+
+      final data = originalItems.map((item) {
+        return columns.map((column) => item.fields[column] ?? '').toList();
+      }).toList();
+
+      pdf.addPage(
+        pw.Page(
+          build: (context) => pw.Table.fromTextArray(
+            headers: columns,
+            data: data,
+          ),
+        ),
+      );
+
+      final blob = html.Blob([await pdf.save()], 'application/pdf');
+      final url = html.Url.createObjectUrlFromBlob(blob);
+      final anchor = html.AnchorElement(href: url)
+        ..setAttribute('download', 'table_data.pdf')
+        ..click();
+
+      html.Url.revokeObjectUrl(url);
+
+      emit(ListDownloaded(message: 'PDF saved'));
+    } catch (e) {
+      emit(ListError(message: 'Failed to print PDF: $e'));
     }
   }
 }

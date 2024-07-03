@@ -1,3 +1,4 @@
+import 'package:dynamic_list_package/src/widgets/download_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/list_bloc.dart';
@@ -53,45 +54,59 @@ class _DynamicListWidgetState extends State<DynamicListWidget> {
     return BlocBuilder<ListBloc, ListState>(
       builder: (context, state) {
         if (state is ListLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (state is ListLoaded) {
           if (selectedColumns.isEmpty) {
             selectedColumns = state.columns;
           }
-          return Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // Expanded(child: SearchWidget()),
-                  SortIconWidget(
-                    columns: state.columns,
-                  ),
-                  ColumnSelectionWidget(
-                    allColumns: state.columns,
-                    onColumnsChanged: updateColumns,
-                    initiallySelectedColumns: selectedColumns,
-                  ),
-                  FilterIconWidget(
-                    columns: state.columns,
-                  ),
+          return Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Dynamic List',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xFF1F397A),
+                      ),
+                    ),
+                    const Spacer(),
+                    // Expanded(child: SearchWidget()),
+                    ColumnSelectionWidget(
+                      allColumns: state.columns,
+                      onColumnsChanged: updateColumns,
+                      initiallySelectedColumns: selectedColumns,
+                    ),
+                    SortIconWidget(
+                      columns: state.columns,
+                    ),
 
-                  ViewToggleButton(
-                    onViewChanged: toggleView,
-                    isTableView: isTableView,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Expanded(
-                child: isTableView
-                    ? TableView(items: state.items, columns: selectedColumns)
-                    : CardView(
-                        items: state.items, columnsToShow: selectedColumns),
-              ),
-            ],
+                    FilterIconWidget(
+                      columns: state.columns,
+                    ),
+                    const DownloadWidget(),
+                    ViewToggleButton(
+                      onViewChanged: toggleView,
+                      isTableView: isTableView,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Expanded(
+                  child: isTableView
+                      ? TableView(items: state.items, columns: selectedColumns)
+                      : CardView(
+                          items: state.items, columnsToShow: selectedColumns),
+                ),
+              ],
+            ),
           );
         } else if (state is ListError) {
           return Center(child: Text(state.message));

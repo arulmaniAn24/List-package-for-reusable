@@ -18,12 +18,12 @@ class MyApp extends StatelessWidget {
       home: BlocProvider<ListBloc>(
         create: (context) => ListBloc(),
         child: Scaffold(
-          appBar: AppBar(title: Text('Dynamic List')),
+          //: AppBar(title: Text('Dynamic List')),
           body: FutureBuilder<ResponseModel>(
             future: fetchData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: const CircularProgressIndicator());
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else if (snapshot.hasData) {
@@ -50,59 +50,59 @@ class MyApp extends StatelessWidget {
           "name": "Name 1",
           "gender": "male",
           "mobile": "9876543210",
-          "status": "status",
+          "status": "Active",
           "email": "arul@gmail.com",
-          "location": "location 5",
+          "location": "location 1",
           "id": 1
         },
         {
           "createdAt": 1719241630,
           "name": "Name 2",
           "gender": "Male",
-          "mobile": "98765433120",
-          "status": "status",
+          "mobile": "9876543312",
+          "status": "Away",
           "email": "mani@gmail.com",
-          "location": "location 7",
+          "location": "location 2",
           "id": 2
         },
         {
           "createdAt": 1719241630,
           "name": "Name 3",
           "gender": "Male",
-          "mobile": "98765433120",
-          "status": "status",
+          "mobile": "9876543312",
+          "status": "Away",
           "email": "mani@gmail.com",
-          "location": "location 7",
+          "location": "location 3",
           "id": 2
         },
         {
           "createdAt": 1719241630,
           "name": "Name 4",
           "gender": "Male",
-          "mobile": "98765433120",
-          "status": "status",
+          "mobile": "9876543312",
+          "status": "Inactive",
           "email": "mani@gmail.com",
-          "location": "location 7",
+          "location": "location 4",
           "id": 2
         },
         {
           "createdAt": 1719241630,
           "name": "Name 5",
           "gender": "Male",
-          "mobile": "98765433120",
-          "status": "status",
+          "mobile": "9876543312",
+          "status": "Active",
           "email": "mani@gmail.com",
-          "location": "location 7",
+          "location": "location 5",
           "id": 2
         },
         {
           "createdAt": 1719241630,
           "name": "Name 6",
           "gender": "Male",
-          "mobile": "98765433120",
-          "status": "status",
+          "mobile": "9876543312",
+          "status": "Active",
           "email": "mani@gmail.com",
-          "location": "location 7",
+          "location": "location 6",
           "id": 2
         }
       ]

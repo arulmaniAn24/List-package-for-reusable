@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class ColumnSelectionWidget extends StatefulWidget {
+class ColumnSelectionWidget extends StatelessWidget {
   final List<String> allColumns;
   final Function(List<String>) onColumnsChanged;
   final List<String> initiallySelectedColumns;
@@ -12,59 +14,37 @@ class ColumnSelectionWidget extends StatefulWidget {
   });
 
   @override
-  _ColumnSelectionWidgetState createState() => _ColumnSelectionWidgetState();
-}
-
-class _ColumnSelectionWidgetState extends State<ColumnSelectionWidget> {
-  late List<String> selectedColumns;
-  bool selectAll = false;
-  TextEditingController searchController = TextEditingController();
-  List<String> filteredColumns = [];
-
-  @override
-  void initState() {
-    super.initState();
-    selectedColumns = List.from(widget.initiallySelectedColumns);
-    filteredColumns = List.from(widget.allColumns);
-    searchController.addListener(filterColumns);
-  }
-
-  void filterColumns() {
-    String query = searchController.text.toLowerCase();
-    setState(() {
-      if (query.isEmpty) {
-        filteredColumns = List.from(widget.allColumns);
-      } else {
-        filteredColumns = widget.allColumns
-            .where((column) => column.toLowerCase().contains(query))
-            .toList();
-      }
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return IconButton(
-      icon: Icon(
-        Icons.view_column,
-        color: Color(0xFF1F397A),
-      ),
-      onPressed: () {
-        showMenu(
-          context: context,
-          position: RelativeRect.fromLTRB(100, 100, 0, 0),
-          items: [
-            PopupMenuItem(
-              enabled: false,
-              child: _ColumnSelectionMenu(
-                allColumns: widget.allColumns,
-                initiallySelectedColumns: widget.initiallySelectedColumns,
-                onColumnsChanged: widget.onColumnsChanged,
-              ),
-            ),
-          ],
-        );
+    return GestureDetector(
+      onTap: () {
+        _showColumnSelectionMenu(context);
       },
+      child: Container(
+        padding: const EdgeInsets.all(8.0),
+        child: SvgPicture.asset(
+          'assets/images/customfilter.svg',
+          width: 20,
+          height: 20,
+          color: const Color(0xFF1F397A),
+        ),
+      ),
+    );
+  }
+
+  void _showColumnSelectionMenu(BuildContext context) {
+    showMenu(
+      context: context,
+      position: const RelativeRect.fromLTRB(100, 100, 0, 0),
+      items: [
+        PopupMenuItem(
+          enabled: false,
+          child: _ColumnSelectionMenu(
+            allColumns: allColumns,
+            onColumnsChanged: onColumnsChanged,
+            initiallySelectedColumns: initiallySelectedColumns,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -127,9 +107,9 @@ class __ColumnSelectionMenuState extends State<_ColumnSelectionMenu> {
             ),
           ),
         ),
-        Divider(),
+        const Divider(),
         CheckboxListTile(
-          title: Text('Select All'),
+          title: const Text('Select All'),
           value: selectAll,
           onChanged: (bool? isChecked) {
             setState(() {
@@ -172,7 +152,7 @@ class __ColumnSelectionMenuState extends State<_ColumnSelectionMenu> {
             widget.onColumnsChanged(selectedColumns);
             Navigator.of(context).pop();
           },
-          child: Text('Save'),
+          child: const Text('Save'),
         ),
       ],
     );

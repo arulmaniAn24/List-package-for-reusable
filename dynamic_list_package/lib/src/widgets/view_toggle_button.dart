@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ViewToggleButton extends StatelessWidget {
   final Function() onViewChanged;
@@ -8,49 +9,54 @@ class ViewToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        _buildIconButton(
-          icon: Icons.grid_view,
-          isActive: !isTableView,
-          onTap: () {
-            if (isTableView) {
-              onViewChanged();
-            }
-          },
-        ),
-        _buildIconButton(
-          icon: Icons.view_list,
-          isActive: isTableView,
-          onTap: () {
-            if (!isTableView) {
-              onViewChanged();
-            }
-          },
-        ),
-      ],
+    return GestureDetector(
+      onTap: onViewChanged,
+      child: _buildIconButton(
+        isTableView: isTableView,
+        onTap: onViewChanged,
+      ),
     );
   }
 
   Widget _buildIconButton({
-    required IconData icon,
-    required bool isActive,
+    required bool isTableView,
     required Function() onTap,
   }) {
-    return GestureDetector(
-      onTap: onTap,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 6),
       child: Container(
         decoration: BoxDecoration(
-          color: isActive ? Color(0xFF1F397A) : Color(0xFFE9EBF2),
-          borderRadius: BorderRadius.circular(8.0),
+          color: const Color(0xFFE9EBF2),
+          borderRadius: BorderRadius.circular(4.0),
         ),
-        padding: EdgeInsets.all(8.0),
-        child: Icon(
-          icon,
-          color: isActive ? Colors.white : Color(0xFF1F397A),
+        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _buildSvgIcon(
+              assetPath: 'assets/images/tableview.svg',
+              isActive: isTableView,
+            ),
+            const SizedBox(width: 16.0),
+            _buildSvgIcon(
+              assetPath: 'assets/images/gridview.svg',
+              isActive: !isTableView,
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Widget _buildSvgIcon({
+    required String assetPath,
+    required bool isActive,
+  }) {
+    return SvgPicture.asset(
+      assetPath,
+      width: 15,
+      height: 15,
+      color: isActive ? const Color(0xFF1F397A) : const Color(0xFF727272),
     );
   }
 }

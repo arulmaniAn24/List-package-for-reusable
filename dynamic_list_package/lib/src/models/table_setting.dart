@@ -2,11 +2,13 @@ class TableSetting {
   final Sort sort;
   final List<String> columnsToShow;
   final String defaultView;
+  final List<String> columns;
 
   TableSetting({
     required this.sort,
     required this.columnsToShow,
     required this.defaultView,
+    required this.columns,
   });
 
   factory TableSetting.fromJson(Map<String, dynamic> json) {
@@ -14,6 +16,7 @@ class TableSetting {
       sort: Sort.fromJson(json['sort']),
       columnsToShow: List<String>.from(json['columns_to_show']),
       defaultView: json['default_view'],
+      columns: [],
     );
   }
 }

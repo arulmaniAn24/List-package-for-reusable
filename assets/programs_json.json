@@ -1,0 +1,25 @@
+{
+  "id": "223e4567-e89b-12d3-a456-426614174001",
+  "active": true,
+  "description": "Book Allowance is sanctioned to the children of the workers for pursuing their studies from Higher Secondary to Post-Graduate Degree Courses.",
+  "description_i18n": {"en": "Book Allowance is sanctioned to the children of the workers for pursuing their studies from Higher Secondary to Post-Graduate Degree Courses."},
+  "eligibility": {
+    "Age": "All",
+    "Children": true,
+    "Children Studying": "Higher secondary, Diploma, Under Graduate, Post Graduate",
+    "Community": "All",
+    "Economic Status": "bpl",
+    "ForFamily": false,
+    "ForIndividual": true,
+    "Gender": "All",
+    "Income": "₹1,00,000",
+    "Location": "All",
+    "MaritalStatus": "All",
+    "Occupation": "Labour",
+    "ResidentStatus": "All"
+  },
+  "frequency": "twoweeks",
+  "name": "labour welfare",
+  "name_i18n": {"en": "labour welfare"},
+  "workgrouptype": "fieldwork"
+}

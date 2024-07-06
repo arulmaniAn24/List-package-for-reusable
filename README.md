@@ -1,4 +1,4 @@
-# pgr
+# beneficiary_package
 
 A new Flutter project.
 

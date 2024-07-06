@@ -1,0 +1,23 @@
+{
+  "workgroup": "Test WG",
+  "beneficiary": "Kennedy or Kennedy's Family",
+  "beneficiary_type": "Individual/Family",
+  "beneficiary_id": "UUID or Aadhar",
+  "status": {
+    "application": {
+      "applied_on": "03/07/2024 10:15 am",
+      "status": "Completed",
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+    },
+    "verification": {
+      "applied_on": "03/07/2024 10:15 am",
+      "status": "Completed",
+      "description": "when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting"
+    },
+    "approval": {
+      "applied_on": "03/07/2024 10:15 am",
+      "status": "Pending",
+      "description": "more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum"
+    }
+  }
+}

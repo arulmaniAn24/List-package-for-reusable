@@ -1,6 +1,6 @@
 {
-    "name": "pgr",
-    "short_name": "pgr",
+    "name": "beneficiary_package",
+    "short_name": "beneficiary_package",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
